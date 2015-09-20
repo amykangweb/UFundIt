@@ -6,7 +6,7 @@ As a small business owner, I want to secure my demand, to produce my product at 
 
 Mission statement:
 
-To lower the barriers of promoting and funding any beneficial cause.
+To lower the barriers of promoting and funding for any beneficial cause.
 
 Vision statment:
 
