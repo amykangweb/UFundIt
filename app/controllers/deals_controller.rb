@@ -1,5 +1,16 @@
 class DealsController < ApplicationController
-  before_action :set_deal, only: [:show, :edit, :update, :destroy]
+  before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:confirmation, :commit, :new, :edit, :update, :destroy]
+
+  def confirmation
+    @deal = Deal.find(params[:deal_id])
+  end
+
+  def commit
+    @deal.users << current_user
+    flash[:notice] = "Committed!"
+    redirect_to @deal
+  end
 
   # GET /deals
   # GET /deals.json
@@ -25,9 +36,9 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
-
     respond_to do |format|
       if @deal.save
+        @deal.owner_id = current_user.id
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
         format.json { render :show, status: :created, location: @deal }
       else
@@ -69,6 +80,10 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount)
+<<<<<<< HEAD
+      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id)
+=======
+      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :user_id => [])
+>>>>>>> bf54dd5201f3ad7994e7b1e285b8625ad2909a61
     end
 end

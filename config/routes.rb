@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
   root 'deals#index'
-  resources :deals
+  resources :deals do
+    get :confirmation
+    member do
+      patch :commit
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
