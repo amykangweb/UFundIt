@@ -1,10 +1,14 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
 
+  def confirmation
+    @deal = Deal.find(params[:deal_id])
+  end
+
   def commit
-    @deal.users << current_user unless @deal.users.include?(current_user)
+    @deal.users << current_user
     flash[:notice] = "Committed!"
-    redirect_to :back
+    redirect_to @deal
   end
 
   # GET /deals

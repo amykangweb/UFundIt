@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   root 'deals#index'
   resources :deals do
+    get :confirmation
     member do
       patch :commit
     end
