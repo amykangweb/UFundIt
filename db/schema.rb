@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150921204125) do
+ActiveRecord::Schema.define(version: 20150921210708) do
+
+  create_table "commitments", force: :cascade do |t|
+    t.integer  "payment"
+    t.integer  "deal_id"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "commitments", ["deal_id"], name: "index_commitments_on_deal_id"
+  add_index "commitments", ["user_id"], name: "index_commitments_on_user_id"
 
   create_table "deals", force: :cascade do |t|
     t.string   "title"
