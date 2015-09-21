@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:confirmation, :commit, :new, :edit, :update, :destroy]
 
   def confirmation
     @deal = Deal.find(params[:deal_id])
