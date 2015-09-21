@@ -1,5 +1,6 @@
 class Deal < ActiveRecord::Base
   has_many :commitments
+  belongs_to :owner, class_name: "User"
   has_many :users, through: :commitments
   validates :title, presence: true
   validates :description, presence: true

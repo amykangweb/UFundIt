@@ -25,9 +25,9 @@ class DealsController < ApplicationController
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
-
     respond_to do |format|
       if @deal.save
+        @deal.owner_id = current_user.id
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
         format.json { render :show, status: :created, location: @deal }
       else
@@ -69,6 +69,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount)
+      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id)
     end
 end
