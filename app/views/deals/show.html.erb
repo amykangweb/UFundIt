@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<%= @deal.users.inspect %>
-
 <p>
   <strong>Title:</strong>
   <%= @deal.title %>
@@ -50,6 +48,17 @@
 <p>
   <strong>Amount:</strong>
   <%= @deal.amount %>
+</p>
+
+<p>
+  <strong>Committers</strong>:
+  <% @deal.users.each do |user| %>
+    <p><%= user.email %></p>
+  <% end %>
+</p>
+
+<p>
+  <%= link_to "Commit!", commit_deal_path(@deal), method: :patch %>
 </p>
 
 <%= link_to 'Edit', edit_deal_path(@deal) %> |

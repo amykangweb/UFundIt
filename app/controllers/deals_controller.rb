@@ -1,5 +1,11 @@
 class DealsController < ApplicationController
-  before_action :set_deal, only: [:show, :edit, :update, :destroy]
+  before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
+
+  def commit
+    @deal.users << current_user unless @deal.users.include?(current_user)
+    flash[:notice] = "Committed!"
+    redirect_to :back
+  end
 
   # GET /deals
   # GET /deals.json
@@ -69,6 +75,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount)
+      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :user_id => [])
     end
 end
