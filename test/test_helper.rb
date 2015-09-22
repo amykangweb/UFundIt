@@ -15,10 +15,10 @@ class ActionController::TestCase
   include Devise::TestHelpers
 end
 
-def sign_in
+def sign_in(role = :user)
   visit root_path
   click_link('Log in')
-  fill_in 'Email', with: users(joe).email
+  fill_in 'Email', with: users(role).email
   fill_in 'Password', with: 'password'
   click_button('Log in')
 end

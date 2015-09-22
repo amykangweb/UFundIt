@@ -1,9 +1,23 @@
+# joe has committed to widgets and owns deal seahawks
 joe:
   email: user@example.com
   name: Joe User
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>
 
+# jane has committed to seahawks, not an owner
 jane:
   email: user2@example.com
   name: Jane User
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+# jeff owns deal widgets, not a commiter
+jeff:
+  email: user3@example.com
+  name: Jeff User
+  encrypted_password: <%= User.new.send(:password_digest, 'password') %>
+
+# generic user has no deals or commits
+user:
+  email: user4@example.com
+  name: Jose User
   encrypted_password: <%= User.new.send(:password_digest, 'password') %>

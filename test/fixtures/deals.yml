@@ -10,6 +10,7 @@ widgets:
   end: 2015-10-21 12:18:49
   published: false
   private: false
+  owner: jeff
   amount: 10
 
 seahawks:
@@ -22,4 +23,5 @@ seahawks:
   end: 2015-010-21 12:18:49
   published: false
   private: false
+  owner: joe
   amount: 40

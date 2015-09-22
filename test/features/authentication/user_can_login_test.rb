@@ -7,7 +7,7 @@ feature "Authentication::CanLogin" do
   end
 
   scenario "with a valid login" do
-    fill_in 'Email', with: users(:one).email
+    fill_in 'Email', with: users(:joe).email
     fill_in 'Password', with: 'password'
     click_button('Log in')
     page.text.must_include "Signed in successfully."
@@ -21,7 +21,7 @@ feature "Authentication::CanLogin" do
   end
 
   scenario "with a valid email but not a valid password" do
-    fill_in 'Email', with: users(:one).email
+    fill_in 'Email', with: users(:joe).email
     fill_in 'Password', with: "wrongpassword"
     click_button('Log in')
     page.text.must_include "Invalid email or password."
