@@ -13,7 +13,6 @@ feature 'Create A Deal' do
     fill_in "Amount", with: deals(:widgets).amount
     click_on "Create Deal"
     page.text.must_include "Deal was successfully created"
-    save_and_open_page
     page.text.must_include "Widgets"
   end
 

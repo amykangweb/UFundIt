@@ -7,14 +7,17 @@ feature "Authentication::CanCreateAccount" do
   end
 
   scenario "with valid content" do
+    fill_in "Name", with: "Person"
     fill_in 'Email', with: "new@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
     click_button('Sign up')
+    save_and_open_page
     page.text.must_include "You have signed up successfully"
   end
 
   scenario "without a valid formatted email" do
+    fill_in "Name", with: "Person"
     fill_in 'Email', with: "user@example"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
@@ -23,10 +26,20 @@ feature "Authentication::CanCreateAccount" do
   end
 
   scenario "without a valid password" do
+    fill_in "Name", with: "Person"
     fill_in 'Email', with: "user@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "notmatching"
     click_button('Sign up')
     page.text.must_include "Password confirmation doesn't match Password"
+  end
+
+  scenario "without a name" do
+    fill_in "Name", with: ""
+    fill_in 'Email', with: "new@example.com"
+    fill_in 'Password', with: "password"
+    fill_in 'Password confirmation', with: "password"
+    click_button('Sign up')
+    page.text.must_include "Name can't be blank"
   end
 end
