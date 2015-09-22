@@ -3,7 +3,7 @@
   <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
-<% if @deal.active? || policy(@deal.owner) %>
+<% if @deal.active? %>
   <p>
     <strong>Deal Posted By:</strong>
     <%= link_to @deal.owner.name, user_show_path(@deal.owner_id) %>
