@@ -1,5 +1,7 @@
 class Deal < ActiveRecord::Base
+  default_scope -> { order('created_at DESC') }
   has_many :commitments
+  has_many :comments, dependent: :destroy
   belongs_to :owner, class_name: "User"
   has_many :users, through: :commitments
   validates :title, presence: true
