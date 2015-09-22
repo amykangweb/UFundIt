@@ -1,5 +1,15 @@
 <p id="notice"><%= notice %></p>
 
+<% if policy(@deal).owner? %>
+  <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
+  <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+<% end %>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @deal.owner.email %>
+</p>
+
 <p>
   <strong>Title:</strong>
   <%= @deal.title %>

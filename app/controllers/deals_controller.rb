@@ -1,5 +1,6 @@
 class DealsController < ApplicationController
   before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:confirmation, :commit, :new, :edit, :update, :destroy]
 
   def confirmation
     @deal = Deal.find(params[:deal_id])
@@ -29,15 +30,16 @@ class DealsController < ApplicationController
 
   # GET /deals/1/edit
   def edit
+    authorize @deal, :owner?
   end
 
   # POST /deals
   # POST /deals.json
   def create
     @deal = Deal.new(deal_params)
+    @deal.owner_id = current_user.id
     respond_to do |format|
       if @deal.save
-        @deal.owner_id = current_user.id
         format.html { redirect_to @deal, notice: 'Deal was successfully created.' }
         format.json { render :show, status: :created, location: @deal }
       else
@@ -51,6 +53,7 @@ class DealsController < ApplicationController
   # PATCH/PUT /deals/1.json
   def update
     respond_to do |format|
+      authorize @deal, :owner?
       if @deal.update(deal_params)
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @deal }
@@ -64,6 +67,7 @@ class DealsController < ApplicationController
   # DELETE /deals/1
   # DELETE /deals/1.json
   def destroy
+    authorize @deal, :owner?
     @deal.destroy
     respond_to do |format|
       format.html { redirect_to deals_url, notice: 'Deal was successfully destroyed.' }
@@ -79,10 +83,6 @@ class DealsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def deal_params
-<<<<<<< HEAD
-      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id)
-=======
-      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :user_id => [])
->>>>>>> bf54dd5201f3ad7994e7b1e285b8625ad2909a61
+      params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id, :user_id => [])
     end
 end
