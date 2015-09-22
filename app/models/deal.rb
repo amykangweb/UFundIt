@@ -13,7 +13,7 @@ class Deal < ActiveRecord::Base
 
   # http://www.jorgecoca.com/buils-search-form-ruby-rails/
   def self.search(query)
-    self.where('title LIKE ?', "%#{query}%")
+    self.where('title LIKE ?', "%#{query}%").where(published: true).where(private: false)
   end
 
   def funded?

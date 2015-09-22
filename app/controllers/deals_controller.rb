@@ -18,7 +18,7 @@ class DealsController < ApplicationController
     if params[:search]
       @deals = Deal.search(params[:search])
     else
-      @deals = Deal.all
+      @deals = Deal.where(published: true).where(private: false)
     end
   end
 
