@@ -29,5 +29,3 @@ end
 # to just run one test:
 # RAILS_ENV=test ruby -Itest test/controller/no_haxzors_test.rb
 # must comment out 'Rails.env = "test"' first
-
-system 'rubocop'

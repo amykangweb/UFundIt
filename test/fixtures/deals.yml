@@ -8,7 +8,7 @@ widgets:
   location: Seattle, WA
   start: 2015-09-21 12:18:49
   end: 2015-10-21 12:18:49
-  published: false
+  published: true
   private: false
   owner: jeff
   amount: 10

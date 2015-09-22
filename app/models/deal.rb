@@ -11,12 +11,16 @@ class Deal < ActiveRecord::Base
   validates :start, presence: true
   validates :end, presence: true
 
+  # http://www.jorgecoca.com/buils-search-form-ruby-rails/
+  def self.search(query)
+    self.where('title LIKE ?', "%#{query}%")
+  end
+
   def funded?
     self.users.count >= self.goal
   end
 
   def active?
-    self.end < Time.now && self.published
+    self.end > Time.now && self.published
   end
 end
-

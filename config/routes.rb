@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root 'deals#index'
 
+  get 'pages/results'
+
   devise_for :users
 
   resources :users do

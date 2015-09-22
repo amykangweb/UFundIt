@@ -15,7 +15,11 @@ class DealsController < ApplicationController
   # GET /deals
   # GET /deals.json
   def index
-    @deals = Deal.all
+    if params[:search]
+      @deals = Deal.search(params[:search])
+    else
+      @deals = Deal.all
+    end
   end
 
   # GET /deals/1
