@@ -6,7 +6,7 @@
   has_many :users, through: :commitments
   validates :title, presence: true
   validates :description, presence: true
-  validates :goal, presence: true
+  validates :goal, numericality: {  greater_than: 0 }
   validates :amount, numericality: {  greater_than: 0 }
   validates :start, presence: true
   validates :end, presence: true
@@ -15,8 +15,12 @@
     self.users.count >= self.goal
   end
 
-  def active?
-    self.end < Time.now && self.published
+  def active? # published and not expired
+    self.end > Time.now && self.published
+  end
+
+  def archived? # expired deals
+    self.end < Time.now
   end
 end
 
