@@ -30,6 +30,7 @@ class DealsController < ApplicationController
 
   # GET /deals/1/edit
   def edit
+    authorize @deal, :owner?
   end
 
   # POST /deals
@@ -52,6 +53,7 @@ class DealsController < ApplicationController
   # PATCH/PUT /deals/1.json
   def update
     respond_to do |format|
+      authorize @deal, :owner?
       if @deal.update(deal_params)
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @deal }
@@ -65,6 +67,7 @@ class DealsController < ApplicationController
   # DELETE /deals/1
   # DELETE /deals/1.json
   def destroy
+    authorize @deal, :owner?
     @deal.destroy
     respond_to do |format|
       format.html { redirect_to deals_url, notice: 'Deal was successfully destroyed.' }

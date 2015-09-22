@@ -6,4 +6,14 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  def deal_owner?(deal)
+    deal.owner == self
+  end
+end
+
+class NullUser
+  def owner?
+    false
+  end
 end
