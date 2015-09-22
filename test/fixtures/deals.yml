@@ -1,25 +1,25 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  title: MyString
-  image: MyString
-  description: MyText
-  goal: 1
-  location: MyString
+widgets:
+  title: Widgets
+  image: http://m.img.brothersoft.com/android/f1/f103c12a5b16839ce867468211959828_icon.png
+  description: Widgets for cats!
+  goal: 20
+  location: Seattle, WA
   start: 2015-09-21 12:18:49
-  end: 2015-09-21 12:18:49
+  end: 2015-10-21 12:18:49
   published: false
   private: false
-  amount: 1
+  amount: 10
 
-two:
-  title: MyString
-  image: MyString
-  description: MyText
-  goal: 1
-  location: MyString
+seahawks:
+  title: Seahawks Suite for Panthers Game
+  image: http://old.seattletimes.com/art/sports/seahawks/stadium/seating/suite_experience01.jpg
+  description: Catch the game in style! Let's get a group together to go in on a suite for the big game.
+  goal: 30
+  location: Seattle, WA
   start: 2015-09-21 12:18:49
-  end: 2015-09-21 12:18:49
+  end: 2015-010-21 12:18:49
   published: false
   private: false
-  amount: 1
+  amount: 40
