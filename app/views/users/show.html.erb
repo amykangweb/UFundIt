@@ -1,0 +1,75 @@
+<h1>Good to see you, <%= @user.name %></h1>
+<%= render 'form_profile' %>
+
+<h2>Commited to (deals) </h2>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Goal</th>
+      <th>Location</th>
+      <th>Voucher Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.deals.each do |deal| %>
+      <tr>
+        <td><%= deal.title %></td>
+        <td><%= deal.description %></td>
+        <td><%= deal.goal %></td>
+        <td><%= deal.location %></td>
+        <td><%= deal.end %></td>
+        <td><%= deal.amount %></td>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h2>My Deals, I created: </h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Image</th>
+      <th>Description</th>
+      <th>Goal</th>
+      <th>Location</th>
+      <th>Start</th>
+      <th>End</th>
+      <th>Published</th>
+      <th>Private</th>
+      <th>Amount</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @user.owned_deals.each do |deal| %>
+      <tr>
+        <td><%= deal.title %></td>
+        <td><%= deal.image %></td>
+        <td><%= deal.description %></td>
+        <td><%= deal.goal %></td>
+        <td><%= deal.location %></td>
+        <td><%= deal.start %></td>
+        <td><%= deal.end %></td>
+        <td><%= deal.published %></td>
+        <td><%= deal.private %></td>
+        <td><%= deal.amount %></td>
+        <td><%= link_to 'Show', deal %></td>
+        <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
+        <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+

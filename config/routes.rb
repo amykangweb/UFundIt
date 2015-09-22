@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
+
   root 'deals#index'
+
+  devise_for :users
+
+  resources :users do
+    get :show
+  end
+
   resources :deals do
     get :confirmation
     member do

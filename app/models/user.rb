@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
   has_many :commitments
   has_many :deals, through: :commitments
   has_many :owned_deals, class_name: "Deal", foreign_key: 'owner_id'
-  has_many :committed_deals, through: :commitments, class_name: "Deal"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
