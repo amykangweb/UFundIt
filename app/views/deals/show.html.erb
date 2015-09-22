@@ -73,3 +73,15 @@
 
 <%= link_to 'Edit', edit_deal_path(@deal) %> |
 <%= link_to 'Back', deals_path %>
+
+<%= render partial: 'comments/form', deal: @deal %>
+
+<h2>Comments</h2>
+
+<% @deal.comments.each do |comment| %>
+  <p><strong><%= comment.user.name %></strong><br>
+    Created <%= time_ago_in_words(comment.created_at) %> ago<br>
+    <%= comment.body %><br>
+    <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
+  </p>
+<% end %>

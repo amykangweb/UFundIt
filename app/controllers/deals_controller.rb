@@ -21,6 +21,7 @@ class DealsController < ApplicationController
   # GET /deals/1
   # GET /deals/1.json
   def show
+    @comment = Comment.new
   end
 
   # GET /deals/new
