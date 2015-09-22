@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :deals do
+    resources :comments
     get :confirmation
     member do
       patch :commit

@@ -14,6 +14,6 @@ People who need funding will be able to capitalize through their own social netw
 
 <h2>Collaborators</h2>
 
-Brian Ray
-Mary Dickson
-Amy Kang
+Brian Ray<br>
+Mary Dickson<br>
+Amy Kang<br>
