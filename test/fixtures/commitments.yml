@@ -11,9 +11,9 @@ joe:
   user_id: 1
   payment: 10
 
-jane_3:
-  payment: 40
+jane:
   deal_id: 2
   user_id: 2
+  payment: 40
 
 
