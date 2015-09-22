@@ -3,6 +3,7 @@
 
   <% if user_signed_in? %>
     <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
+    <p><%= link_to 'Profile', user_show_path(current_user) %></p>
   <% else %>
     <p><%= link_to 'Sign up', new_user_registration_path %></p>
     <p><%= link_to 'Log in', new_user_session_path %></p>

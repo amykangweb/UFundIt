@@ -6,21 +6,25 @@
   has_many :users, through: :commitments
   validates :title, presence: true
   validates :description, presence: true
-  validates :goal, presence: true
+  validates :goal, numericality: {  greater_than: 0 }
   validates :amount, numericality: {  greater_than: 0 }
   validates :start, presence: true
   validates :end, presence: true
 
   # http://www.jorgecoca.com/buils-search-form-ruby-rails/
   def self.search(query)
-    self.where('title LIKE ?', "%#{query}%")
+    self.where('title LIKE ?', "%#{query}%").where(published: true).where(private: false)
   end
 
   def funded?
     self.users.count >= self.goal
   end
 
-  def active?
+  def active? # published and not expired
     self.end > Time.now && self.published
+  end
+
+  def archived? # expired deals
+    self.end < Time.now
   end
 end
