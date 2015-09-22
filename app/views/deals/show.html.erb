@@ -1,4 +1,4 @@
-<% if policy(@deal).owner? %>
+<% if policy(@deal).owner? && !@deal.published %>
   <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
   <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
