@@ -23,4 +23,8 @@ class NullUser
   def deal_owner?(deal)
     false
   end
+
+  def admin?
+    false
+  end
 end
