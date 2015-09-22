@@ -6,15 +6,24 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 100.times do
-  User.create(
+  User.create!(
     name: Faker::Name.name,
     email: Faker::Internet.email,
     password: 'password',
+    admin: nil,
     )
 end
 
+  User.create!(
+    name: 'admin',
+    email: 'admin@example.com',
+    password: 'password',
+    admin: true,
+    )
+
+
 10.times do
-  Deal.create(
+  Deal.create!(
     title: Faker::Lorem.sentence(rand(3..20)),
     image: 'image/path',
     description: Faker::Lorem.paragraph(1),

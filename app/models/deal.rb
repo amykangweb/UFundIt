@@ -1,4 +1,4 @@
-class Deal < ActiveRecord::Base
+ class Deal < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   has_many :commitments
   has_many :comments, dependent: :destroy
@@ -7,7 +7,7 @@ class Deal < ActiveRecord::Base
   validates :title, presence: true
   validates :description, presence: true
   validates :goal, presence: true
-  validates :amount, numericality: { greater_than: 0 }
+  validates :amount, numericality: {  greater_than: 0 }
   validates :start, presence: true
   validates :end, presence: true
 
