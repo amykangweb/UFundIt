@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :commitments
   has_many :deals, through: :commitments
+  has_many :owned_deals, class_name: "Deal", foreign_key: 'owner_id'
   has_many :committed_deals, through: :commitments, class_name: "Deal"
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -13,7 +14,7 @@ class User < ActiveRecord::Base
 end
 
 class NullUser
-  def owner?
+  def deal_owner?(deal)
     false
   end
 end

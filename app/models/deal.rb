@@ -8,8 +8,4 @@ class Deal < ActiveRecord::Base
   validates :amount, presence: true #want amount to be > 0
   validates :start, presence: true
   validates :end, presence: true
-
-  def self.created_deals(user)
-    Deal.where(owner_id: user.id)
-  end
 end
