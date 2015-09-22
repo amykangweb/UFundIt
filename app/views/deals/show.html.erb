@@ -1,77 +1,80 @@
-<p id="notice"><%= notice %></p>
-
 <% if policy(@deal).owner? %>
   <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
   <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
 <% end %>
 
-<p>
-  <strong>Owner:</strong>
-  <%= @deal.owner.email %>
-</p>
+<% if @deal.active? %>
+  <p>
+    <strong>Deal Posted By:</strong>
+    <%= link_to @deal.owner.name, user_show_path(@deal.owner_id) %>
+  </p>
+
+  <p>
+    <strong>Title:</strong>
+    <%= @deal.title %>
+  </p>
+
+  <p>
+    <strong>Image:</strong>
+    <img src="<%= @deal.image %>">
+  </p>
+
+  <p>
+    <strong>Description:</strong>
+    <%= @deal.description %>
+  </p>
+
+  <p>
+    <strong>Commitments Needed:</strong>
+    <%= @deal.goal %>
+  </p>
+
+  <p>
+    <strong>Progress to Goal:</strong>
+    <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
+
+  <p>
+    <strong>Location:</strong>
+    <%= @deal.location %>
+  </p>
+
+  <p>
+    <strong>Start:</strong>
+    <%= @deal.start %>
+  </p>
+
+  <p>
+    <strong>End:</strong>
+    <%= @deal.end %>
+  </p>
+
+  <p>
+    <strong>Published:</strong>
+    <%= @deal.published %>
+  </p>
+
+  <p>
+    <strong>Private:</strong>
+    <%= @deal.private %>
+  </p>
+
+  <p>
+    <strong>Amount:</strong>
+    <%= @deal.amount %>
+  </p>
+
+  <p>
+    <strong>Committers</strong>:
+    <% @deal.users.each do |user| %>
+      <p><%= user.name %></p>
+    <% end %>
+  </p>
+<% end %>
 
 <p>
-  <strong>Title:</strong>
-  <%= @deal.title %>
+  <%= link_to "Commit!", deal_confirmation_path(@deal) unless @deal.funded? %>
 </p>
 
-<p>
-  <strong>Image:</strong>
-  <img src="<%= @deal.image %>">
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @deal.description %>
-</p>
-
-<p>
-  <strong>Goal:</strong>
-  <%= @deal.goal %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @deal.location %>
-</p>
-
-<p>
-  <strong>Start:</strong>
-  <%= @deal.start %>
-</p>
-
-<p>
-  <strong>End:</strong>
-  <%= @deal.end %>
-</p>
-
-<p>
-  <strong>Published:</strong>
-  <%= @deal.published %>
-</p>
-
-<p>
-  <strong>Private:</strong>
-  <%= @deal.private %>
-</p>
-
-<p>
-  <strong>Amount:</strong>
-  <%= @deal.amount %>
-</p>
-
-<p>
-  <strong>Committers</strong>:
-  <% @deal.users.each do |user| %>
-    <p><%= user.email %></p>
-  <% end %>
-</p>
-
-<p>
-  <%= link_to "Commit!", deal_confirmation_path(@deal) %>
-</p>
-
-<%= link_to 'Edit', edit_deal_path(@deal) %> |
 <%= link_to 'Back', deals_path %>
 
 <%= social_share_button_tag(@deal.title) %>

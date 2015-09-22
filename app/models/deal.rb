@@ -10,4 +10,13 @@ class Deal < ActiveRecord::Base
   validates :amount, numericality: { greater_than: 0 }
   validates :start, presence: true
   validates :end, presence: true
+
+  def funded?
+    self.users.count >= self.goal
+  end
+
+  def active?
+    self.end < Time.now && self.published
+  end
 end
+

@@ -18,4 +18,10 @@ feature "Deals::ShowADeal" do
     visit deal_path(deal.id)
     page.must_have_content "Progress to goal: #{deal.users.count} out of #{deal.goal}"
   end
+
+  # click an owner name to see their profile page
+  # log-in needed to click a button to make a commitment
+  # deal should show expiration date
+  # funded deal shows funded, and user cannot commit to it
+
 end
