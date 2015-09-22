@@ -1,4 +1,4 @@
-class Deal < ActiveRecord::Base
+ class Deal < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
   has_many :commitments
   has_many :comments, dependent: :destroy
@@ -6,8 +6,8 @@ class Deal < ActiveRecord::Base
   has_many :users, through: :commitments
   validates :title, presence: true
   validates :description, presence: true
-  validates :goal, presence: true
-  validates :amount, numericality: { greater_than: 0 }
+  validates :goal, numericality: {  greater_than: 0 }
+  validates :amount, numericality: {  greater_than: 0 }
   validates :start, presence: true
   validates :end, presence: true
 
@@ -20,7 +20,11 @@ class Deal < ActiveRecord::Base
     self.users.count >= self.goal
   end
 
-  def active?
+  def active? # published and not expired
     self.end > Time.now && self.published
+  end
+
+  def archived? # expired deals
+    self.end < Time.now
   end
 end
