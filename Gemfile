@@ -14,12 +14,14 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'byebug'
-  gem 'launchy'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-reporters'
   gem 'rubocop'
   gem 'sqlite3'
+  gem 'launchy'
+  gem 'faker'
+
 end
 
 group :development do
