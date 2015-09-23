@@ -13,7 +13,9 @@ gem 'social-share-button'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'omniauth'
-gem 'omniauth-'
+gem 'omniauth-facebook'
+gem 'omniauth-paypal'
+# gem 'omniauth-linkedin'
 
 group :development, :test do
   gem 'byebug'
@@ -24,6 +26,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'launchy'
   gem 'faker'
+  gem 'dotenv-rails'
 end
 
 group :development do
