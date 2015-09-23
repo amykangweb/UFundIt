@@ -1,3 +1,7 @@
+<% if !@deal.published %>
+<h1>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin.</h1>
+<% end %>
+
 <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
   <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
   <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
