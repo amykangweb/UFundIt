@@ -15,8 +15,11 @@ Rails.application.routes.draw do
     get :confirmation
     member do
       patch :commit
+      patch :flag
+      patch :unflag
     end
   end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
