@@ -12,6 +12,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'social-share-button'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'gravtastic'
 
 group :development, :test do
   gem 'byebug'

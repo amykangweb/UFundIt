@@ -3,7 +3,7 @@
 
   <% if user_signed_in? %>
     <p><strong>Good to see you, <%= current_user.name %></strong></p>
-
+    <%= image_tag current_user.gravatar_url %>
     <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
     <p><%= link_to 'Profile', user_show_path(current_user) %></p>
   <% else %>
