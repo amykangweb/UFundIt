@@ -11,6 +11,11 @@
   validates :start, presence: true
   validates :end, presence: true
 
+  # http://www.jorgecoca.com/buils-search-form-ruby-rails/
+  def self.search(query)
+    self.where('title LIKE ?', "%#{query}%").where(published: true).where(private: false)
+  end
+
   def funded?
     self.users.count >= self.goal
   end
@@ -23,4 +28,3 @@
     self.end < Time.now
   end
 end
-

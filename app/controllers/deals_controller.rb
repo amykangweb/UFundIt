@@ -13,7 +13,11 @@ class DealsController < ApplicationController
   end
 
   def index
-    @deals = policy_scope Deal
+    if params[:search]
+      @deals = Deal.search(params[:search])
+    else
+      @deals = policy_scope Deal
+    end
   end
 
   def show
