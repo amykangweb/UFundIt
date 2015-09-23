@@ -18,13 +18,12 @@
     <% @deals.each do |deal| %>
       <% if deal.active? %>
       <tr>
-        <td><%= deal.title %></td>
+        <td><%= link_to deal.title, deal %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
         <td><%= deal.end %></td>
         <td><%= deal.amount %></td>
-        <td><%= link_to 'Show', deal %></td>
       </tr>
       <% end %>
     <% end %>
@@ -50,13 +49,12 @@
     <% @deals.each do |deal| %>
       <% unless deal.active? %>
       <tr>
-        <td><%= deal.title %></td>
+        <td><%= link_to deal.title, deal %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
         <td><%= deal.end %></td>
         <td><%= deal.amount %></td>
-        <td><%= link_to 'Show', deal %></td>
       </tr>
       <% end %>
     <% end %>

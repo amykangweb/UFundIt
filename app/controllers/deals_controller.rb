@@ -22,6 +22,7 @@ class DealsController < ApplicationController
 
   def show
     @comment = Comment.new
+    @update = Update.new
   end
 
   def new

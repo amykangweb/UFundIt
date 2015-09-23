@@ -2,10 +2,16 @@
 <h1>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin.</h1>
 <% end %>
 
-<% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
-  <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
-  <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-<% end %>
+<div class="control">
+  <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
+    <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
+    <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  <% end %>
+
+  <% if policy(@deal).owner? %>
+    <p><%= link_to 'Update', new_deal_update_path(@deal, @update) %></p>
+  <% end %>
+</div>
 
 <p>
   <strong>Deal Posted By:</strong>
@@ -67,6 +73,20 @@
 </p>
 
 <p>
+  <strong>Updates:</strong>
+  <% @deal.updates.each do |update| %>
+    <p>
+      <strong>Updated <%= time_ago_in_words(update.created_at) %> ago</strong><br>
+      <%= update.content %><br>
+      <% if policy(update).owner? || policy(@deal).is_admin? %>
+        <%= link_to "Edit", edit_deal_update_path(@deal, update) %> |
+        <%= link_to "Destroy", [@deal, update], method: :delete, data: { confirm: "Are you sure?" } %>
+      <% end %>
+    </p>
+  <% end %>
+</p>
+
+<p>
   <strong>Committers</strong>:
   <% @deal.users.each do |user| %>
     <p><%= user.name %></p>
@@ -76,8 +96,6 @@
 <p>
   <%= link_to "Commit!", deal_confirmation_path(@deal) unless @deal.funded? || !@deal.active? %>
 </p>
-
-<%= link_to 'Back', deals_path %>
 
 <%= social_share_button_tag(@deal.title) %>
 
