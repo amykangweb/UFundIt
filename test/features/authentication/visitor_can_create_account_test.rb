@@ -12,7 +12,6 @@ feature "Authentication::CanCreateAccount" do
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
     click_button('Sign up')
-    save_and_open_page
     page.text.must_include "You have signed up successfully"
   end
 

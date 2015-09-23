@@ -3,11 +3,7 @@ class DealPolicy < ApplicationPolicy
     user.deal_owner?(record)
   end
 
-  def publish?
-    user.admin?
-  end
-
-  def destroy?
+  def is_admin?
     user.admin?
   end
 
