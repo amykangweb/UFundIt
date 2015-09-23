@@ -1,5 +1,5 @@
 <nav>
-  <h1>Demand7</h1>
+  <h1><%= link_to 'Demand7', root_path %></h1>
 
   <% if user_signed_in? %>
     <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
