@@ -1,5 +1,6 @@
  class Deal < ActiveRecord::Base
   default_scope -> { order('created_at DESC') }
+  mount_uploader :image, ImageUploader
   has_many :commitments
   has_many :updates, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -12,6 +13,7 @@
   validates :end, presence: true
   validates :start, presence: true
   validate :date_validation
+  validate :image_size
 
   # http://www.jorgecoca.com/buils-search-form-ruby-rails/
   def self.search(query)
@@ -42,6 +44,12 @@
       return false
     else
       return true
+    end
+  end
+
+  def image_size
+    if image.size > 5.megabytes
+      errors.add(:image, "should be less than 5MB")
     end
   end
 end
