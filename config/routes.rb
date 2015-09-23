@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'deals#index'
 
   get 'pages/about'
@@ -12,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :deals do
     resources :comments
+    resources :updates
     get :confirmation
     member do
       patch :commit

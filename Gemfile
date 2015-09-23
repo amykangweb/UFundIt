@@ -22,7 +22,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'launchy'
   gem 'faker'
-
 end
 
 group :development do

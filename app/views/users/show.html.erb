@@ -20,13 +20,12 @@
     <tbody>
         <% @user.deals.each do |deal| %>
           <tr>
-            <td><%= deal.title %></td>
+            <td><%= link_to deal.title, deal %></td>
             <td><%= deal.description %></td>
             <td><%= deal.goal %></td>
             <td><%= deal.location %></td>
             <td><%= deal.end %></td>
             <td><%= deal.amount %></td>
-            <td><%= link_to 'Show', deal %></td>
           </tr>
         <% end %>
     </tbody>
@@ -58,7 +57,7 @@
     <tbody>
         <% @user.owned_deals.each do |deal| %>
           <tr>
-            <td><%= deal.title %></td>
+            <td><%= link_to deal.title, deal %></td>
             <td><%= deal.image %></td>
             <td><%= deal.description %></td>
             <td><%= deal.goal %></td>
@@ -68,7 +67,6 @@
             <td><%= deal.published %></td>
             <td><%= deal.private %></td>
             <td><%= deal.amount %></td>
-            <td><%= link_to 'Show', deal %></td>
             <td><%= link_to 'Edit', edit_deal_path(deal) %></td>
             <td><%= link_to 'Destroy', deal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
           </tr>
@@ -76,7 +74,3 @@
       </tbody>
   </table>
 <% end %>
-
-
-
-
