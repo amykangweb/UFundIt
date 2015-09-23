@@ -6,6 +6,9 @@ feature "Deleting a deal" do
     sign_in(:jeff)
     click_link "Profile"
     page.text.wont_include "Destroy"
-    # this test needs work and feature needs fixing
+    click_link "Widgets"
+    within(".control") do
+      page.text.wont_include "Destroy"
+    end
   end
 end

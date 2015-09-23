@@ -7,6 +7,9 @@ feature "Editing a deal" do
     sign_in(:jeff)
     click_link "Profile"
     page.text.wont_include "Edit"
-    #this test needs work
+    click_link "Widgets"
+    within(".control") do
+      page.text.wont_include "Edit"
+    end
   end
 end
