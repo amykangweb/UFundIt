@@ -1,5 +1,7 @@
-<% if current_user.admin? && Deal.where(flag: true).count > 0 %>
-<%= render 'deals/flags' %>
+<% if current_user %>
+  <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
+    <%= render 'deals/flags' %>
+  <% end %>
 <% end %>
 
 <h1>Listing Deals</h1>

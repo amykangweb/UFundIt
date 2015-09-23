@@ -26,8 +26,12 @@ class DealsController < ApplicationController
   end
 
   def flag
-    @deal.flag = true
-    if @deal.save
+    if @deal.flag
+      flash[:notice] = "Thanks for the heads up. This listing has already been reported. An admin will review this listing to make sure it confirms with the Terms of Service."
+      redirect_to root_path
+    else
+      @deal.flag = true
+      @deal.save
       flash[:notice] = "Thanks for the heads up. An admin will review this listing to make sure it confirms with the Terms of Service."
       redirect_to root_path
     end

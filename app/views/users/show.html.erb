@@ -32,7 +32,7 @@
   </table>
 <% end %>
 
-<h2>My Deals, I created: </h2>
+<h2>Deals <%= @user.name %> created: </h2>
 
 <% if @user.owned_deals.empty? %>
   <p>No sponsored deals.</p>
