@@ -35,11 +35,11 @@
   </div>
   <div class="field">
     <%= f.label :start, '*Deal Start Date' %><br>
-    <%= f.date_select :start, :discard_year => true %>
+    <%= f.date_select :start %>
   </div>
   <div class="field">
     <%= f.label :end, '*Deal End Date (30 day default)' %><br>
-    <%= f.date_select :end, :default => 30.days.from_now, :discard_year => true %>
+    <%= f.date_select :end, :default => 30.days.from_now %>
   </div>
   <div class="field">
     <%= f.label :private, 'Private?'%><br>
