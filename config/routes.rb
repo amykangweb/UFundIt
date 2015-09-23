@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'pages/about'
 
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
 
   resources :users do
     get :show
