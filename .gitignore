@@ -17,3 +17,6 @@
 /tmp
 
 /vendor
+
+# Ignore uploaded test images.
+/public/uploads

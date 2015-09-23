@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'better_errors'
+gem 'carrierwave', '0.10.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
+gem 'fog'
 gem 'jbuilder', '~> 2.0'
 gem 'jquery-rails'
+gem 'mini_magick', '3.8.0'
 gem 'pundit'
 gem 'rails', '4.2.4'
 gem 'sass-rails', '~> 5.0'
