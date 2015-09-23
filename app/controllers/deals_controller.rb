@@ -31,6 +31,7 @@ class DealsController < ApplicationController
 
   def edit
     authorize @deal, :owner?
+    authorize @deal, :can_edit?
   end
 
   def create
@@ -50,6 +51,7 @@ class DealsController < ApplicationController
   def update
     respond_to do |format|
       authorize @deal, :owner?
+      authorize @deal, :can_edit?
       if @deal.update(deal_params)
         format.html { redirect_to @deal, notice: 'Deal was successfully updated.' }
         format.json { render :show, status: :ok, location: @deal }
@@ -62,6 +64,7 @@ class DealsController < ApplicationController
 
   def destroy
     authorize @deal, :owner?
+    authorize @deal, :can_edit?
     @deal.destroy
     respond_to do |format|
       format.html { redirect_to deals_url, notice: 'Deal was successfully destroyed.' }

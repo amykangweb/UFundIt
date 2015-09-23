@@ -30,6 +30,10 @@
     self.end < Time.now
   end
 
+  def published?
+    self.published
+  end
+
   private
 
   def date_validation
@@ -41,5 +45,3 @@
     end
   end
 end
-
-
