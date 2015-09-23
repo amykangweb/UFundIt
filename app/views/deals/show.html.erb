@@ -7,9 +7,17 @@
     <p><%= link_to 'Edit', edit_deal_path(@deal) %></p>
     <p><%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %></p>
   <% end %>
+</div>
 
+<div class="owner-actions">
   <% if policy(@deal).owner? %>
     <p><%= link_to 'Update', new_deal_update_path(@deal, @update) %></p>
+    <% if @deal.users.count > 0 %>
+      <p>Contact users who have committed to this deal:</p>
+      <% @deal.users.each do |user| %>
+        <%= link_to user.email, user_show_path(user.id) %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
 
