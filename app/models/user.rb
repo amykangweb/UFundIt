@@ -33,6 +33,6 @@ class NullUser
   end
 
   def admin?
-    Pfalse
+    false
   end
 end
