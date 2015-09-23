@@ -16,4 +16,19 @@ jane:
   user_id: 2
   payment: 40
 
+<% 10.times do |i| %>
+user_<%= i %>
+  deal_id: 1
+  user_id: <%= i >
+  payment: 10
+<% end %>
+
+<% 10.times do |i| %>
+user_<%= i %>
+  deal_id: 2
+  user_id: <%= i >
+  payment: 40
+<% end %>
+
+
 
