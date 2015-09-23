@@ -5,12 +5,13 @@
   has_many :comments, dependent: :destroy
   belongs_to :owner, class_name: "User"
   has_many :users, through: :commitments
-  validates :title, presence: true
+  validates :title, length: { in: 3..140 }
   validates :description, presence: true
   validates :goal, numericality: {  greater_than: 0 }
   validates :amount, numericality: {  greater_than: 0 }
-  validates :start, presence: true
   validates :end, presence: true
+  validates :start, presence: true
+  validate :date_validation
 
   # http://www.jorgecoca.com/buils-search-form-ruby-rails/
   def self.search(query)
@@ -28,4 +29,17 @@
   def archived? # expired deals
     self.end < Time.now
   end
+
+  private
+
+  def date_validation
+    if self[:end] < self[:start]
+      errors[:end] << "End date must come after start date."
+      return false
+    else
+      return true
+    end
+  end
 end
+
+

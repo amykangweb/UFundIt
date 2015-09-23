@@ -12,19 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label :title, '*Title' %><br>
+      <p>(140 characters max)</p>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :image, 'Image URL' %><br>
     <%= f.text_field :image %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label :description, '*Description' %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :goal %><br>
+    <%= f.label :goal, '*Goal' %><br>
+    <p>How many commitments do you need to tip this deal?</p>
     <%= f.number_field :goal %>
   </div>
   <div class="field">
@@ -32,26 +34,31 @@
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :start %><br>
-    <%= f.datetime_select :start %>
+    <%= f.label :start, '*Deal Start Date' %><br>
+    <%= f.date_select :start, :discard_year => true %>
   </div>
   <div class="field">
-    <%= f.label :end %><br>
-    <%= f.datetime_select :end %>
+    <%= f.label :end, '*Deal End Date (30 day default)' %><br>
+    <%= f.date_select :end, :default => 30.days.from_now, :discard_year => true %>
   </div>
   <div class="field">
-    <%= f.label :published %><br>
-    <%= f.check_box :published %>
-  </div>
-  <div class="field">
-    <%= f.label :private %><br>
+    <%= f.label :private, 'Private?'%><br>
+    <p> Private deals can be shared but are not searchable or listed on the index. </p>
     <%= f.check_box :private %>
   </div>
   <div class="field">
-    <%= f.label :amount %><br>
+    <%= f.label :amount, '*Amount' %><br>
+    <p> Dollar amount required for each commitment </p>
     <%= f.number_field :amount %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="field">
+    <%= f.label :published, 'Published?' %><br>
+    <p>Click here only when you are ready to publish. Published deals will be available to support immediately. To preview your deal, click below with this box unchecked. Deals cannot be unpublished! </p>
+    <%= f.check_box :published %>
   </div>
+
+  <div class="actions">
+    <%= f.submit "Preview / Publish"%>
+  </div>
+  <p>* Required fields</p>
 <% end %>

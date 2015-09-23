@@ -36,6 +36,7 @@ admin: true,
     )
 end
 
+# Published active deals
 10.times do
   Deal.create(
     title: Faker::Lorem.sentence(rand(3..15)),
@@ -52,6 +53,8 @@ end
     )
 end
 
+
+# Expired deals
 10.times do
   Deal.create(
     title: Faker::Lorem.sentence(rand(3..15)),
@@ -68,11 +71,46 @@ end
     )
 end
 
+# Unpublished deals
+10.times do
+  Deal.create(
+    title: Faker::Lorem.sentence(rand(3..15)),
+    image: 'image/path',
+    description: Faker::Lorem.paragraph(1),
+    goal: 10,
+    location: 'Seattle, WA',
+    start: Faker::Time.between(60.days.ago, Time.now, :all),
+    end: Faker::Time.forward(30),
+    amount: 25,
+    owner_id: User.all.sample.id,
+    published: false,
+    private: true,
+    )
+end
+
 
 40.times do
   Commitment.create(
     payment: 10,
     deal_id: Deal.all.sample.id,
+    user_id: User.all.sample.id,
+  )
+end
+
+#funded deal 1
+10.times do
+  Commitment.create(
+    payment: 10,
+    deal_id: 1,
+    user_id: User.all.sample.id,
+  )
+end
+
+# funded deal 2
+10.times do
+  Commitment.create(
+    payment: 10,
+    deal_id: 2,
     user_id: User.all.sample.id,
   )
 end
