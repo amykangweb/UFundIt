@@ -8,8 +8,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :name, presence: true
-
   def deal_owner?(deal)
     deal.owner == self
   end
