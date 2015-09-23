@@ -1,10 +1,14 @@
 class DealPolicy < ApplicationPolicy
   def owner?
-    user.deal_owner?(record)
+    user.deal_owner?(record) || user.admin?
   end
 
   def is_admin?
     user.admin?
+  end
+
+  def can_edit?
+    record.published? && !user.admin? ? false : true
   end
 
   class Scope < Scope

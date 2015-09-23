@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150922191622) do
+ActiveRecord::Schema.define(version: 20150923192153) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -52,6 +52,15 @@ ActiveRecord::Schema.define(version: 20150922191622) do
 
   add_index "deals", ["owner_id"], name: "index_deals_on_owner_id"
 
+  create_table "updates", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "deal_id"
+  end
+
+  add_index "updates", ["deal_id"], name: "index_updates_on_deal_id"
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -67,9 +76,13 @@ ActiveRecord::Schema.define(version: 20150922191622) do
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.boolean  "admin"
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["provider"], name: "index_users_on_provider"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["uid"], name: "index_users_on_uid"
 
 end
