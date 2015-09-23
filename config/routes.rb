@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'deals#index'
 
-  get 'pages/results'
+  get 'pages/about'
 
   devise_for :users
 
