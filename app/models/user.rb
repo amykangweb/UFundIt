@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
   has_many :commitments
   has_many :deals, through: :commitments
   has_many :comments, dependent: :destroy
