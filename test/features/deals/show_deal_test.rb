@@ -16,12 +16,13 @@ feature "Deals::ShowADeal" do
   scenario "anyone can see how many commitments a deal needs to reach goal" do
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    page.must_have_content "Progress to goal: #{deal.users.count} out of #{deal.goal}"
+    page.text.must_include "Progress to Goal: #{deal.users.count} out of #{deal.goal}"
   end
 
-  # click an owner name to see their profile page
-  # log-in needed to click a button to make a commitment
-  # deal should show expiration date
-  # funded deal shows funded, and user cannot commit to it
-
+  scenario "click an owner name to see their profile page" do
+    deal = deals(:widgets)
+    visit deal_path(deal.id)
+    click_on "Jeff User"
+    page.text.must_include deals(:widgets).title
+  end
 end
