@@ -18,6 +18,7 @@ gem 'omniauth-paypal'
 # gem 'omniauth-linkedin'
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
@@ -26,7 +27,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'launchy'
   gem 'faker'
-  gem 'dotenv-rails'
 end
 
 group :development do
