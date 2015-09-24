@@ -1,0 +1,32 @@
+<h1>List of all unpublished Deals</h1>
+
+  <h2> Active Deals </h2>
+  <table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Goal</th>
+      <th>Location</th>
+      <th>End</th>
+      <th>Amount</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+
+    <% @deal.all.where(published: false).each do |deal| %>
+      <tr>
+        <td><%= deal.title %></td>
+        <td><%= shorten(deal.description) %></td>
+        <td><%= deal.goal %></td>
+        <td><%= deal.location %></td>
+        <td><%= deal.end %></td>
+        <td><%= deal.amount %></td>
+        <td><%= link_to 'Show', deal %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+  </table>

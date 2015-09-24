@@ -8,6 +8,7 @@ jane:
   user_id: 2
   payment: 40
 
+
 jane2:
   deal_id: 3
   user_id: 2
@@ -17,4 +18,5 @@ jane3:
   deal_id: 3
   user_id: 2
   payment: 10
+
 
