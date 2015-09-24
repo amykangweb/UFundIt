@@ -3,7 +3,6 @@ require 'test_helper'
 feature 'Create A Deal' do
   scenario 'logged in user can create a deal' do
     sign_in
-    visit deals_path
     click_on "New Deal"
     fill_in "Title", with: deals(:widgets).title
     page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
