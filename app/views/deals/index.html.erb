@@ -4,74 +4,53 @@
   <% end %>
 <% end %>
 
-<h1>Listing Deals</h1>
+<div class="billboard">
+  <div class="text-container">
+  </div>
+  <h1>
+    Deals on Demand.
+    <p>To lower the barriers of promoting and funding for any beneficial cause.</p>
+  </h1>
+  <%= link_to "Sign Up for Free!", new_user_registration_path, class: "button large sign-up-btn" %>
+</div>
 
-  <h2> Active Deals </h2>
-  <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Description</th>
-      <th>Goal</th>
-      <th>Location</th>
-      <th>End</th>
-      <th>Amount</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row deal-boxes">
+    <h4 class="sub-title">Active Deals</h4>
     <% @deals.each do |deal| %>
       <% if deal.active? && !deal.funded? %>
-      <tr>
-        <td><%= link_to deal.title, deal %></td>
-        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
-        <td><%= shorten(deal.description) %></td>
-        <td><%= deal.goal %></td>
-        <td><%= deal.location %></td>
-        <td><%= deal.end %></td>
-        <td><%= deal.amount %></td>
-      </tr>
+        <div class="large-4 medium-5 small-6 columns boxes">
+          <% if deal.image? %>
+            <%= image_tag(deal.image.url, id: 'deal-image') %>
+          <% else %>
+            <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
+          <% end %>
+          <h4><%= link_to deal.title, deal %></h4>
+          <%= shorten(deal.description) %><br>
+          <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
+          <%= deal.location %> / <%= time_ago_in_words(deal.end) %> left
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-  </table>
 
-  <br>
-
-  <h2> Recently Closed Deals </h2>
-  <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Image</th>
-      <th>Description</th>
-      <th>Goal</th>
-      <th>Location</th>
-      <th>Ended</th>
-      <th>Amount</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="closed-boxes">
+    <h4 class="sub-title">Recently Closed Deals</h4>
     <% @deals.each do |deal| %>
       <% if deal.archived? || deal.funded? %>
-      <tr>
-        <td><%= link_to deal.title, deal %></td>
-        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
-        <td><%= shorten(deal.description) %></td>
-        <td><%= deal.goal %></td>
-        <td><%= deal.location %></td>
-        <td><%= deal.end %></td>
-        <td><%= deal.amount %></td>
-      </tr>
+        <div class="large-4 medium-5 small-6 columns boxes">
+          <% if deal.image? %>
+            <%= image_tag(deal.image.url, id: 'deal-image') %>
+          <% else %>
+            <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
+          <% end %>
+          <h4><%= link_to deal.title, deal %></h4>
+          <%= shorten(deal.description) %><br>
+          <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
+          <%= deal.location %> / Closed
+        </div>
       <% end %>
     <% end %>
-  </tbody>
-
-</table>
-
+  </div>
+</div>
 <br>
 
 <%= link_to 'New Deal', new_deal_path %>

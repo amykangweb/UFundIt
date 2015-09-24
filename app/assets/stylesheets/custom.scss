@@ -1,10 +1,117 @@
-nav {
-  background: red;
+@import url(https://fonts.googleapis.com/css?family=Passion+One);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html, body {
+  background: #FFFFF2 !important;
 }
 
-#graph svg {
-  background: black;
-  &:after {
-    content: \A;
+/* Front page billboard styles */
+.billboard {
+  position: relative;
+  text-align: center;
+  margin-top: -20px;
+  margin-bottom: 25px;
+  width: 100%;
+  height: 400px;
+  background: url(deal.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  h1 {
+    font-family: 'Passion One', cursive;
+    position: absolute;
+    top: 90px;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    color: #fff;
+    z-index: 100;
+    font-size: 4rem;
+    p {
+      font-size: 20px;
+      font-family: 'Roboto', sans-serif !important;
+    }
   }
+  .sign-up-btn {
+    font-family: 'Passion One', cursive;
+    position: absolute;
+    background: #D6FDB2;
+    left:0;
+    right:0;
+    margin-left:auto;
+    margin-right:auto;
+    top: 230px;
+    width: 225px;
+    padding: 10px;
+    z-index: 100;
+    &:hover {
+      background: #A7D9C3;
+    }
+  }
+  .text-container {
+    height: 400px;
+    width: 100%;
+    background: #94A9BB;
+    opacity: 0.9;
+  }
+}
+
+/* BG color for progress bar. */
+#graph svg {
+  background: grey;
+}
+
+/* row CSS for Deal boxes on index page. */
+.deal-boxes {
+  font-family: 'Roboto', sans-serif !important;
+  h4 {
+    font-family: 'Passion One', cursive;
+    margin-bottom: 10px;
+    color: #434335;
+  }
+  h5 {
+    font-family: 'Passion One', cursive;
+  }
+  .sub-title {
+    font-size: 30px;
+  }
+}
+
+/* Deal boxes on index page have max height */
+.boxes {
+  min-height: 400px;
+  max-height: 400px;
+  max-width: 320px;
+  border: 1px solid #94A9BB;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow:    0px 1px 10px 0px rgba(50, 50, 50, 0.75);
+  box-shadow:         0px 1px 10px 0px rgba(50, 50, 50, 0.75);
+  padding: 20px;
+  margin: 5px;
+}
+
+/* Row of closed deals on front page */
+.closed-boxes {
+  font-family: 'Roboto', sans-serif !important;
+  clear: both;
+  position: relative;
+  top: 40px;
+  h5 {
+    font-family: 'Passion One', cursive;
+  }
+}
+
+/* footer styles */
+footer {
+  font-family: 'Roboto', sans-serif !important;
+  font-size: 15px;
+  font-weight: bold;
+  margin-top: 75px;
+  height: 200px !important;
+  width: 100%;
+  background: #94A9BB;
+  padding-top: 75px;
+  text-align: center;
 }
