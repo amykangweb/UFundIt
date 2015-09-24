@@ -24,6 +24,7 @@
         <% @user.deals.each do |deal| %>
           <tr>
             <td><%= link_to deal.title, deal %></td>
+            <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
             <td><%= deal.description %></td>
             <td><%= deal.goal %></td>
             <td><%= deal.location %></td>
