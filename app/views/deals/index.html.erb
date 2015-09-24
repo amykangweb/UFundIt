@@ -11,7 +11,6 @@
     <p class="welcome">Welcome back, <%= current_user.name %>!</p>
   <% end %>
 </div>
-
 <div id="flags" class="row">
   <div class="large-9 columns">
     <% if current_user %>
@@ -40,7 +39,6 @@
       </div>
     <% end %>
   <% end %>
-
   <div class="closed-boxes">
   <h4 class="sub-title">Recently Closed Deals</h4>
   <% @deals.each do |deal| %>

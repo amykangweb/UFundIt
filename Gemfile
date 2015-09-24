@@ -16,6 +16,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'social-share-button'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-paypal'
+gem 'omniauth-twitter'
+# gem 'omniauth-linkedin'
 gem 'gravtastic'
 gem 'foundation-rails'
 
@@ -25,6 +30,7 @@ group :production do
 end
 
 group :development, :test do
+  gem 'dotenv-rails'
   gem 'byebug'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
