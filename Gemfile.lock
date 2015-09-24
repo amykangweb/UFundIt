@@ -71,6 +71,8 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    d3-rails (3.5.6)
+      railties (>= 3.1)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -186,8 +188,12 @@ GEM
       fog-core
       nokogiri (~> 1.5, >= 1.5.11)
     formatador (0.2.5)
+    foundation-rails (5.5.2.1)
+      railties (>= 3.1.0)
+      sass (>= 3.3.0, < 3.5)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
     i18n (0.7.0)
     inflecto (0.0.2)
     ipaddress (0.8.0)
@@ -330,9 +336,12 @@ DEPENDENCIES
   byebug
   carrierwave (= 0.10.0)
   coffee-rails (~> 4.1.0)
+  d3-rails
   devise
   faker
   fog
+  foundation-rails
+  gravtastic
   jbuilder (~> 2.0)
   jquery-rails
   launchy
