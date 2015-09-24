@@ -1,13 +1,6 @@
 The following deals have been flagged for review:
 
 <table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @deals.where(flag: true).each do |deal| %>
       <tr>

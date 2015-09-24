@@ -35,12 +35,9 @@
     <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %>
     <br>
   </div>
-  <div class="large-5 columns">
-    <img src="http://placehold.it/400x500">
-  </div>
 
   <div class="large-5 columns">
-    <h4><%= @deal.title %></h4>
+    <h3><%= @deal.title %></h3>
     <p><%= @deal.description %></p>
     <br>
     <p>
@@ -57,23 +54,11 @@
     <% end %>
     </p>
 
-    <p>Deal location:</p>
-    <p><%= @deal.location %></p>
-    <p>
-      <strong>Start:</strong>
-      <%= @deal.start %>
-    </p>
+    <p>Deal location: <%= @deal.location %></p>
 
     <p>
-      <strong>End:</strong>
-      <%= @deal.end %>
+      <strong>Deal Ends: <%= @deal.end.to_date %></strong>
     </p>
-
-    <p>
-      <strong>Private:</strong>
-      <%= @deal.private %>
-    </p>
-
 
     <div class="panel">
       <h5>Get this Deal</h5>
@@ -90,14 +75,21 @@
       <div id="graph">
       </div>
     </div>
+
+    <h4>Share this Deal!</h4>
+    <%= social_share_button_tag(@deal.title) %>
+    <% if @deal.private %>
+      <strong>This deal has been flagged as private. Only visitors with the link can access it. Please share with caution.</strong>
+    <% end %>
+    <br>
+    <br>
+    <%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
   </div>
-
-
 
   <div class="row">
     <hr/>
     <div class="large-6 columns">
-      <strong>Committers</strong>:
+      <strong>Committed</strong>:
       <% @deal.users.each do |user| %>
         <p><%= user.name %></p>
       <% end %>
@@ -106,30 +98,15 @@
       <h4>Deal Posted By:</h4>
       <%= image_tag @deal.owner.gravatar_url %>
       <%= link_to @deal.owner.name, user_show_path(@deal.owner_id) %>
-      <hr>
-      <%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
-
     </div>
-  </div>
-
-  <div class="row">
-  <hr>
-  <div class="large-12 columns">
-    <h4>You might also like:</h4>
-    <img src="http://placehold.it/200x150&text=[img]">
-    <img src="http://placehold.it/200x150&text=[img]">
   </div>
 </div>
 
-
-
-
-
-<%= social_share_button_tag(@deal.title) %>
-
+<div id="comments" class="row">
+  <div class="large-9 columns">
 <%= render partial: 'comments/form', deal: @deal %>
 
-<h2>Comments:</h2>
+<h5>Comments:</h5>
 
 <% @deal.comments.each do |comment| %>
   <p><strong><%= comment.user.name %></strong><br>
@@ -138,6 +115,8 @@
     <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
   </p>
 <% end %>
+</div>
+</div>
 
 <script type="text/javascript">
   goal = <%= raw @deal.goal %>;
