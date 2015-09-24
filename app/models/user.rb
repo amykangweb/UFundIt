@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
 
   def self.from_omniauth(auth)
     logger.info auth.inspect
-    where(email: auth.info.email).first_or_create do |user|
+    where(email: auth.info.email).first || where(name: auth.info.nickname).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
       user.name = auth.info.nickname
