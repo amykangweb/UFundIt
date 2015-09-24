@@ -16,6 +16,7 @@ gem 'social-share-button'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 gem 'gravtastic'
+gem 'foundation-rails'
 
 group :development, :test do
   gem 'byebug'
