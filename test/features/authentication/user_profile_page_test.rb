@@ -6,6 +6,8 @@ feature "Authentication::ProfilePage" do
     visit root_path
     click_link('Profile')
     page.text.must_include 'Joe User'
+    page.text.must_include 'Reset Password'
+
     #in deals sponsored list:
     page.text.must_include 'Seahawks'
     #in deals committed to list:
