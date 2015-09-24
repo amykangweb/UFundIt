@@ -41,6 +41,9 @@
   <strong>Progress to Goal:</strong>
   <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
 
+  <div id="graph">
+  </div>
+
 <p>
   <strong>Location:</strong>
   <%= @deal.location %>
@@ -109,3 +112,17 @@
     <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
   </p>
 <% end %>
+
+<script type="text/javascript">
+  goal = <%= raw @deal.goal %>;
+  current = <%= raw @deal.users.count %>;
+  chart = d3.select("#graph")
+    .append("svg")
+    .attr("width", 200)
+    .attr("height", 20);
+
+    chart.append("rect")
+    .attr("height", 20)
+    .attr("width", (current/goal) * 200)
+    .style("fill", "red");
+</script>

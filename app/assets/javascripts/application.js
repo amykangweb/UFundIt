@@ -14,4 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require social-share-button
+//= require d3
 //= require_tree .
