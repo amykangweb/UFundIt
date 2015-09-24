@@ -27,11 +27,11 @@
       <tr>
         <td><%= link_to deal.title, deal %></td>
         <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
-        <td><%= shorten(deal.description) %></td>
+        <td><%= shorten(deal.description) %>...</td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
         <td><%= deal.end %></td>
-        <td><%= deal.amount %></td>
+        <td>$<%= deal.amount %></td>
       </tr>
       <% end %>
     <% end %>

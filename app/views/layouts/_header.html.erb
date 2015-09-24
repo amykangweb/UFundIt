@@ -1,19 +1,46 @@
-<nav>
-  <h1><%= link_to 'Demand7', root_path %></h1>
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1>
+        <a href="/">
+          Demand 7
+        </a>
+      </h1>
+    </li>
+  </ul>
 
-  <% if user_signed_in? %>
-    <p><strong>Good to see you, <%= current_user.name %></strong></p>
-    <%= image_tag current_user.gravatar_url %>
-    <p><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></p>
-    <p><%= link_to 'Profile', user_show_path(current_user) %></p>
-  <% else %>
-    <p><%= link_to 'Sign up', new_user_registration_path %></p>
-    <p><%= link_to 'Log in', new_user_session_path %></p>
-  <% end %>
-
-  <%= form_tag deals_path, :method => 'get' do %>
-  <p>
-    <%= text_field_tag :search, params[:search], :placehoder => 'Search items here' %>
-    <%= submit_tag "Search", :name => nil %>
-  <% end %>
+  <section class="top-bar-section">
+    <ul class="right">
+      <li class="divider"></li>
+      <% if current_user && user_signed_in? %>
+        <li class="divider"></li>
+        <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'View My Profile', user_show_path(current_user) %></li>
+      <% else %>
+        <li><%= link_to 'Sign up', new_user_registration_path %></li>
+        <li class="divider"></li>
+        <li><%= link_to 'Log in', new_user_session_path %></li>
+      <% end %>
+    </ul>
+  </section>
 </nav>
+
+<div class="row">
+  <div class="large-9 columns">
+    <div class="row collapse">
+      <div class="large-10 small-8 columns">
+        <nav>
+        <%= form_tag deals_path, :method => 'get' do %>
+          <div class="large-10 small-8 columns">
+            <%= text_field_tag :search, params[:search], :placehoder => 'Search items here' %>
+          </div>
+          <div class="large-2 small-4 columns">
+            <%= submit_tag "Search", :name => nil, class: "postfix button expand" %>
+          </div>
+        <% end %>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
