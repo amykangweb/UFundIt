@@ -19,3 +19,7 @@
 
 </body>
 </html>
+
+<!-- greeting & image: -->
+<p>Good to see you, <%= current_user.name %></p>
+<%= image_tag current_user.gravatar_url %>
