@@ -393,14 +393,11 @@ DEPENDENCIES
   minitest-rails
   minitest-rails-capybara
   minitest-reporters
-<<<<<<< HEAD
   omniauth
   omniauth-facebook
   omniauth-paypal
   omniauth-twitter
-=======
   pg
->>>>>>> master
   pundit
   rails (= 4.2.4)
   rails_12factor
