@@ -6,7 +6,7 @@
   has_many :comments, dependent: :destroy
   belongs_to :owner, class_name: "User"
   has_many :users, through: :commitments
-  validates :title, length: { in: 3..140 }
+  validates :title, length: { in: 3..60 }
   validates :description, presence: true
   validates :goal, numericality: {  greater_than: 0 }
   validates :amount, numericality: {  greater_than: 0 }
