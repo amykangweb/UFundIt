@@ -11,14 +11,18 @@
     Deals on Demand.
     <p>To lower the barriers of promoting and funding for any beneficial cause.</p>
   </h1>
-  <%= link_to "Sign Up for Free!", new_user_registration_path, class: "button large sign-up-btn" %>
+  <% if !user_signed_in? %>
+    <%= link_to "Sign Up for Free!", new_user_registration_path, class: "button large sign-up-btn" %>
+  <% else %>
+    <p class="welcome">Welcome back, <%= current_user.name %>!</p>
+  <% end %>
 </div>
 
   <div class="row deal-boxes">
     <h4 class="sub-title">Active Deals</h4>
     <% @deals.each do |deal| %>
       <% if deal.active? && !deal.funded? %>
-        <div class="large-4 medium-5 small-6 columns boxes">
+        <div class="large-4 medium-5 small-6-centered columns boxes">
           <% if deal.image? %>
             <%= image_tag(deal.image.url, id: 'deal-image') %>
           <% else %>
@@ -51,6 +55,3 @@
     <% end %>
   </div>
 </div>
-<br>
-
-<%= link_to 'New Deal', new_deal_path %>
