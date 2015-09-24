@@ -6,7 +6,6 @@ feature "Editing a deal" do
   scenario "link is not shown when published" do
     sign_in(:jeff)
     click_link "Profile"
-    page.text.wont_include "Edit"
     click_link "Widgets"
     within(".control") do
       page.text.wont_include "Edit"
