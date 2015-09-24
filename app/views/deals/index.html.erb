@@ -11,6 +11,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Description</th>
       <th>Goal</th>
       <th>Location</th>
@@ -25,6 +26,7 @@
       <% if deal.active? && !deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
+        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
@@ -43,6 +45,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Description</th>
       <th>Goal</th>
       <th>Location</th>
@@ -56,6 +59,7 @@
       <% if deal.archived? || deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
+        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
