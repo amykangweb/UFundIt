@@ -23,9 +23,9 @@ admin: true,
 
 10.times do
   Deal.create(
-    title: Faker::Lorem.sentence(rand(3..15)),
+    title: Faker::Commerce.product_name,
     image: 'image/path',
-    description: Faker::Lorem.paragraph(1),
+    description: Faker::Lorem.paragraph(3),
     goal: 10,
     location: 'Seattle, WA',
     start: Faker::Time.between(2.days.ago, Time.now, :all),
@@ -39,9 +39,9 @@ end
 # Published active deals
 10.times do
   Deal.create(
-    title: Faker::Lorem.sentence(rand(3..15)),
+    title: Faker::Commerce.product_name,
     image: 'image/path',
-    description: Faker::Lorem.paragraph(1),
+    description: Faker::Lorem.paragraph(3),
     goal: 10,
     location: 'Seattle, WA',
     start: Faker::Time.between(2.days.ago, Time.now, :all),
@@ -57,9 +57,9 @@ end
 # Expired deals
 10.times do
   Deal.create(
-    title: Faker::Lorem.sentence(rand(3..15)),
+    title: Faker::Commerce.product_name,
     image: 'image/path',
-    description: Faker::Lorem.paragraph(1),
+    description: Faker::Lorem.paragraph(3),
     goal: 10,
     location: 'Seattle, WA',
     start: Faker::Time.between(60.days.ago, Time.now, :all),
@@ -74,9 +74,9 @@ end
 # Unpublished deals
 10.times do
   Deal.create(
-    title: Faker::Lorem.sentence(rand(3..15)),
+    title: Faker::Commerce.product_name,
     image: 'image/path',
-    description: Faker::Lorem.paragraph(1),
+    description: Faker::Lorem.paragraph(3),
     goal: 10,
     location: 'Seattle, WA',
     start: Faker::Time.between(60.days.ago, Time.now, :all),
