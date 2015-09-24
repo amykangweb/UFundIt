@@ -5,7 +5,7 @@ feature "Creating comment" do
     sign_in
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    fill_in "Body", with: "Comment Test"
+    fill_in "Leave a comment:", with: "Comment Test"
     click_on "Create Comment"
     page.text.must_include "Comment Test"
   end
@@ -13,7 +13,7 @@ feature "Creating comment" do
   scenario "is not successful when user is not signed in" do
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    fill_in "Body", with: "Comment Test"
+    fill_in "Leave a comment:", with: "Comment Test"
     click_on "Create Comment"
     page.text.must_include "You need to sign in or sign up before continuing."
   end
@@ -22,7 +22,7 @@ feature "Creating comment" do
     sign_in
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    fill_in "Body", with: ""
+    fill_in "Leave a comment:", with: ""
     click_on "Create Comment"
     page.text.must_include "Body can't be blank"
   end

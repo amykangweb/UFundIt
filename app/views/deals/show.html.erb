@@ -33,6 +33,7 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
   <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %>
 </p>
 
@@ -49,6 +50,9 @@
 <p>
   <strong>Progress to Goal:</strong>
   <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
+
+  <div id="graph">
+  </div>
 
 <p>
   <strong>Location:</strong>
@@ -105,11 +109,13 @@
   <%= link_to "Commit!", deal_confirmation_path(@deal) unless @deal.funded? || !@deal.active? %>
 </p>
 
+<%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
+
 <%= social_share_button_tag(@deal.title) %>
 
 <%= render partial: 'comments/form', deal: @deal %>
 
-<h2>Comments</h2>
+<h2>Comments:</h2>
 
 <% @deal.comments.each do |comment| %>
   <p><strong><%= comment.user.name %></strong><br>
@@ -118,3 +124,17 @@
     <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
   </p>
 <% end %>
+
+<script type="text/javascript">
+  goal = <%= raw @deal.goal %>;
+  current = <%= raw @deal.users.count %>;
+  chart = d3.select("#graph")
+    .append("svg")
+    .attr("width", 200)
+    .attr("height", 20);
+
+    chart.append("rect")
+    .attr("height", 20)
+    .attr("width", (current/goal) * 200)
+    .style("fill", "red");
+</script>

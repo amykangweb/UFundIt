@@ -1,3 +1,9 @@
+<% if current_user %>
+  <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
+    <%= render 'deals/flags' %>
+  <% end %>
+<% end %>
+
 <h1>Listing Deals</h1>
 
   <h2> Active Deals </h2>
@@ -5,6 +11,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Description</th>
       <th>Goal</th>
       <th>Location</th>
@@ -16,9 +23,10 @@
 
   <tbody>
     <% @deals.each do |deal| %>
-      <% if deal.active? %>
+      <% if deal.active? && !deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
+        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
@@ -37,6 +45,7 @@
   <thead>
     <tr>
       <th>Title</th>
+      <th>Image</th>
       <th>Description</th>
       <th>Goal</th>
       <th>Location</th>
@@ -47,9 +56,10 @@
   </thead>
   <tbody>
     <% @deals.each do |deal| %>
-      <% unless deal.active? %>
+      <% if deal.archived? || deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
+        <td><%= image_tag(deal.image.url, id: 'deal-image') if deal.image? %></td>
         <td><%= shorten(deal.description) %></td>
         <td><%= deal.goal %></td>
         <td><%= deal.location %></td>
