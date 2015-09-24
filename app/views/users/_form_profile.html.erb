@@ -1,24 +1,15 @@
+<aside class="large-3 columns">
+  <ul class="side-nav">
+      <li> <%= gravatar_for(@user)%> </li>
+      <li><b>Name:</b> <%= @user.name %></li>
+      <li><b>Email:</b> <%= @user.email %></li>
+      <li><%= link_to 'Reset Password', new_user_password_path(@user) %></li>
+  </ul>
 
-
-   <aside class="large-3 columns">
-
-          <h1>Profile</h1>
-          <ul class="side-nav">
-              <li class="gravatar"><%= image_tag @user.gravatar_url %></li>
-              <li><b>Name:</b> <%= @user.name %></li>
-              <li><b>Email:</b> <%= @user.email %></li>
-              <li><%= link_to 'Reset Password', new_user_password_path(@user) %></li>
-          </ul>
-
-          <div class="panel">
-            <h5>Summary</h5>
-            <p>I am the admin of all administrators. HA!  You wish you had the administration of me, ADMin of Admins.</p>
-
-          </div>
-
-        </aside>
-
-
-      </div>
+  <div class="panel">
+    <h5>User bio</h5>
+    <p>I am an excellent deal-maker and deal committer!</p>
+  </div>
+</aside>
 
 
