@@ -18,5 +18,7 @@
 
 /vendor
 
+/.env
+
 # Ignore uploaded test images.
 /public/uploads
