@@ -19,18 +19,23 @@ gem 'uglifier', '>= 1.3.0'
 gem 'gravtastic'
 gem 'foundation-rails'
 
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
 group :development, :test do
   gem 'byebug'
   gem 'minitest-rails'
   gem 'minitest-rails-capybara'
   gem 'minitest-reporters'
   gem 'rubocop'
-  gem 'sqlite3'
   gem 'launchy'
   gem 'faker'
 end
 
 group :development do
+  gem 'sqlite3'
   gem 'spring'
   gem 'web-console', '~> 2.0'
 end
