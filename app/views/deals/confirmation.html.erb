@@ -1,3 +1,5 @@
+<div class="row">
+<div class="large-9 columns">
 <h1>Confirmation Page</h1>
 
 <p>You are commiting to:</p>
@@ -9,9 +11,13 @@ $<%= @deal.amount %>
 <p>Are you sure?</p>
 
 <p>
-  <%= link_to "Commit!", commit_deal_path(@deal), method: :patch %>
+  <%= link_to "Commit!", commit_deal_path(@deal), class: "button", method: :patch %>
 </p>
+
 
 <p>
   <%= link_to "Back", @deal %>
 </p>
+
+</div>
+</div>
