@@ -1,5 +1,5 @@
 class DealsController < ApplicationController
-  before_action :set_deal, only: [:commit, :show, :edit, :update, :destroy]
+  before_action :set_deal, only: [:commit, :show, :edit, :flag, :unflag, :update, :destroy]
   before_action :authenticate_user!, only: [:confirmation, :commit, :new, :edit, :update, :destroy]
 
   def confirmation
@@ -23,6 +23,26 @@ class DealsController < ApplicationController
   def show
     @comment = Comment.new
     @update = Update.new
+  end
+
+  def flag
+    if @deal.flag
+      flash[:notice] = "Thanks for the heads up. This listing has already been reported. An admin will review this listing to make sure it confirms with the Terms of Service."
+      redirect_to root_path
+    else
+      @deal.flag = true
+      @deal.save
+      flash[:notice] = "Thanks for the heads up. An admin will review this listing to make sure it confirms with the Terms of Service."
+      redirect_to root_path
+    end
+  end
+
+  def unflag
+    @deal.flag = false
+    if @deal.save
+      flash[:notice] = "Unflagged!"
+      redirect_to root_path
+    end
   end
 
   def new
@@ -78,6 +98,6 @@ class DealsController < ApplicationController
   end
 
   def deal_params
-    params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id, :user_id => [])
+    params.require(:deal).permit(:title, :image, :description, :goal, :location, :start, :end, :published, :private, :amount, :owner_id, :flag, :user_id => [])
   end
 end

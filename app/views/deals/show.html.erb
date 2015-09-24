@@ -105,6 +105,8 @@
   <%= link_to "Commit!", deal_confirmation_path(@deal) unless @deal.funded? || !@deal.active? %>
 </p>
 
+<%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
+
 <%= social_share_button_tag(@deal.title) %>
 
 <%= render partial: 'comments/form', deal: @deal %>

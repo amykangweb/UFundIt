@@ -29,11 +29,15 @@
   end
 
   def archived? # expired deals
-    self.end < Time.now
+    self.end < Time.now && self.published
   end
 
   def published?
     self.published
+  end
+
+  def flagged?
+    self.flag
   end
 
   private
