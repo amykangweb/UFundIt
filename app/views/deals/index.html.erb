@@ -1,9 +1,3 @@
-<% if current_user %>
-  <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
-    <%= render 'deals/flags' %>
-  <% end %>
-<% end %>
-
 <div class="billboard">
   <div class="text-container">
   </div>
@@ -14,23 +8,34 @@
   <%= link_to "Sign Up for Free!", new_user_registration_path, class: "button large sign-up-btn" %>
 </div>
 
-  <div class="row deal-boxes">
-    <h4 class="sub-title">Active Deals</h4>
-    <% @deals.each do |deal| %>
-      <% if deal.active? && !deal.funded? %>
-        <div class="large-4 medium-5 small-6 columns boxes">
-          <% if deal.image? %>
-            <%= image_tag(deal.image.url, id: 'deal-image') %>
-          <% else %>
-            <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
-          <% end %>
-          <h4><%= link_to deal.title, deal %></h4>
-          <%= shorten(deal.description) %><br>
-          <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
-          <%= deal.location %> / <%= time_ago_in_words(deal.end) %> left
-        </div>
-      <% end %>
+<div id="flags" class="row">
+  <div class="large-9 columns">
+  <h3><strong>Admin Alert:</strong></h3>
+  <% if current_user %>
+    <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
+      <%= render 'deals/flags' %>
     <% end %>
+  <% end %>
+  </div>
+</div>
+
+<div class="row deal-boxes">
+  <h4 class="sub-title">Active Deals</h4>
+  <% @deals.each do |deal| %>
+    <% if deal.active? && !deal.funded? %>
+      <div class="large-4 medium-5 small-6 columns boxes">
+        <% if deal.image? %>
+          <%= image_tag(deal.image.url, id: 'deal-image') %>
+        <% else %>
+          <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
+        <% end %>
+        <h4><%= link_to deal.title, deal %></h4>
+        <%= shorten(deal.description) %>...<br>
+        <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
+        <%= deal.location %> / <%= time_ago_in_words(deal.end) %> left
+      </div>
+    <% end %>
+  <% end %>
 
   <div class="closed-boxes">
     <h4 class="sub-title">Recently Closed Deals</h4>
@@ -51,6 +56,3 @@
     <% end %>
   </div>
 </div>
-<br>
-
-<%= link_to 'New Deal', new_deal_path %>
