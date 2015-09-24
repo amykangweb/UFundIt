@@ -5,6 +5,23 @@ html, body {
   background: #FFFFF2 !important;
 }
 
+.alert-box {
+  border-radius: 0 !important;
+  margin-bottom: 0;
+  text-align: center;
+  border: none !important;
+  font-weight: bold !important;
+  color: #575743 !important;
+}
+
+.notice {
+  background: #D4FFAD!important;
+}
+
+.error {
+  background: #FF6B35 !important;
+}
+
 nav {
   padding-top: 10px;
   height: 65px !important;
