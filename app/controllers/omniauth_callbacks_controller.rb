@@ -12,5 +12,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # alias_method :facebook, :all
   alias_method :paypal, :all
   alias_method :facebook, :all
-
+  alias_method :twitter, :all
 end

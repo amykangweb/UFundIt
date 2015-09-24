@@ -15,6 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-paypal'
+gem 'omniauth-twitter'
 # gem 'omniauth-linkedin'
 
 group :development, :test do
