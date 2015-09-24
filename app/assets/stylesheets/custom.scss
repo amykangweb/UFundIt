@@ -4,4 +4,7 @@ nav {
 
 #graph svg {
   background: black;
+  &:after {
+    content: \A;
+  }
 }
