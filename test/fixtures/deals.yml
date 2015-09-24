@@ -13,6 +13,8 @@ widgets:
   private: false
   owner_id: 3
   amount: 10
+  flag: nil
+
 # joe owns this
 seahawks:
   id: 2
@@ -27,3 +29,18 @@ seahawks:
   private: false
   owner_id: 1
   amount: 40
+  flag: nil
+
+# funded:
+#   id: 3
+#   title: A Funded Deal
+#   image: http://old.seattletimes.com/art/sports/seahawks/stadium/seating/suite_experience01.jpg
+#   description: This is a funded Deal
+#   goal: 2
+#   location: Seattle, WA
+#   start: 2015-09-21 12:18:49
+#   end: 2015-010-21 12:18:49
+#   published: true
+#   private: false
+#   owner_id: 1
+#   amount: 10

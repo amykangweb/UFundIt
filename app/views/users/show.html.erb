@@ -1,4 +1,7 @@
 <h1><%= @user.name %></h1>
+
+<%= image_tag @user.gravatar_url %>
+
 <%= render 'form_profile' %>
 
 <h2>Commited to (deals) </h2>
@@ -32,7 +35,7 @@
   </table>
 <% end %>
 
-<h2>My Deals, I created: </h2>
+<h2>Deals <%= @user.name %> created: </h2>
 
 <% if @user.owned_deals.empty? %>
   <p>No sponsored deals.</p>

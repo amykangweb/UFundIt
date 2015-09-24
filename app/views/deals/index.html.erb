@@ -1,3 +1,9 @@
+<% if current_user %>
+  <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
+    <%= render 'deals/flags' %>
+  <% end %>
+<% end %>
+
 <h1>Listing Deals</h1>
 
   <h2> Active Deals </h2>
@@ -16,7 +22,7 @@
 
   <tbody>
     <% @deals.each do |deal| %>
-      <% if deal.active? %>
+      <% if deal.active? && !deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
         <td><%= shorten(deal.description) %></td>
@@ -47,7 +53,7 @@
   </thead>
   <tbody>
     <% @deals.each do |deal| %>
-      <% unless deal.active? %>
+      <% if deal.archived? || deal.funded? %>
       <tr>
         <td><%= link_to deal.title, deal %></td>
         <td><%= shorten(deal.description) %></td>

@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
   has_many :commitments
   has_many :deals, through: :commitments
   has_many :comments, dependent: :destroy
@@ -8,6 +10,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+  validates :name, presence: true
 
   def deal_owner?(deal)
     deal.owner == self
