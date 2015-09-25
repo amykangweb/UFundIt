@@ -67,7 +67,7 @@
       </h4>
       <h5 class="subheader"><%= @deal.description %></h5>
       <%= social_share_button_tag(@deal.title) %>
-      <%= link_to "Flag for review", flag_deal_path(@deal), method: :patch %>
+      <%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
     </div>
   </div>
 </div>
