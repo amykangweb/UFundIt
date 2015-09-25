@@ -9,9 +9,8 @@ feature "Commitments::CommitingToADeal" do
     click_on "Commit!"
     page.text.must_include "Are you sure?"
     find(".paypal").click
-    save_and_open_page
     page.text.must_include "Committed!"
-    page.text.must_include users(:user).name
+    page.must_have_content users(:joe).name
   end
 
   scenario "user can commit to a deal if goal is not met" do
