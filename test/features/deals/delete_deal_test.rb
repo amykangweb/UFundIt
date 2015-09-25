@@ -4,8 +4,10 @@ require "test_helper"
 feature "Deleting a deal" do
   scenario "is not allowed when it is published" do
     sign_in(:jeff)
-    click_link "Profile"
+    click_link "View My Profile"
     click_link "Widgets"
-    page.text.wont_include "Destroy Deal"
+    within "#owner-actions" do
+      refute_content "Destroy"
+    end
   end
 end
