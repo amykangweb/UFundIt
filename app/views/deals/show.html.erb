@@ -1,9 +1,15 @@
 <div class="deal-show">
 <div class="row">
 
-  <div class="large-6 columns">
-    <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %><br>
-  </div>
+  <% if @deal.image? %>
+    <div class="large-6 columns">
+      <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %><br>
+    </div>
+  <% else %>
+    <div class="large-6 columns">
+      <img src="http://placehold.it/500x300">
+    </div>
+  <% end %>
   <div class="large-6 columns">
     <div class="panel">
       <h4>
