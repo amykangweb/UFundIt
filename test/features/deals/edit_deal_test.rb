@@ -29,4 +29,45 @@ feature "Editing a deal" do
     click_on "Preview / Publish"
     page.text.must_include "Deal was successfully updated."
   end
+
+  scenario "owner can edit deal before published" do
+    sign_in(:jeff)
+    click_on "New Deal"
+    fill_in "Title", with: "My new deal"
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    fill_in "Description", with: deals(:widgets).description
+    fill_in "Goal", with: deals(:widgets).goal
+    fill_in "Location", with: deals(:widgets).location
+    fill_in "Amount", with: deals(:widgets).amount
+    click_button "Preview / Publish"
+    click_on "Edit Deal"
+    fill_in "Title", with: "Amazing Toaster Oven"
+    check "Published?"
+    click_on "Preview / Publish"
+    page.text.must_include "Deal was successfully updated."
+    page.text.wont_include "This Deal is Not Yet Published!"
+    page.text.must_include "Amazing Toaster Oven"
+    page.text.wont_include "My new deal"
+  end
+
+  scenario "owner can save a draft and come back to edit unpublished later" do
+    sign_in(:jeff)
+    click_on "New Deal"
+    fill_in "Title", with: "My new deal"
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    fill_in "Description", with: deals(:widgets).description
+    fill_in "Goal", with: deals(:widgets).goal
+    fill_in "Location", with: deals(:widgets).location
+    fill_in "Amount", with: deals(:widgets).amount
+    click_button "Preview / Publish"
+    click_link('Sign out')
+    sign_in(:jeff)
+    click_on "View My Profile"
+    click_on "My new deal"
+    click_on "Edit Deal"
+    check "Published?"
+    click_on "Preview / Publish"
+    page.text.must_include "Deal was successfully updated."
+    page.text.wont_include "This Deal is Not Yet Published!"
+  end
 end
