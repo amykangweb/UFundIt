@@ -1,4 +1,3 @@
-<div class="deal-show">
   <div class="billboard">
     <div class="text-container">
     </div>
@@ -12,6 +11,7 @@
       <p class="welcome">Welcome back, <%= current_user.name %>!</p>
     <% end %>
   </div>
+
   <div id="flags" class="row">
     <div class="large-9 columns">
       <% if current_user %>
@@ -29,9 +29,11 @@
       <% if deal.active? && !deal.funded? %>
         <div class="large-4 medium-5 small-6-centered columns boxes">
           <% if deal.image? %>
-            <%= image_tag(deal.image.url, id: 'deal-image') %>
+            <div class="image-box">
+              <%= image_tag(deal.image.url, id: 'deal-image') %>
+            </div>
           <% else %>
-            <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
+            <img src="http://placehold.it/300x200">
           <% end %>
           <h4><%= link_to deal.title, deal %></h4>
           <%= shorten(deal.description) %><br>
@@ -48,7 +50,7 @@
           <% if deal.image? %>
             <%= image_tag(deal.image.url, id: 'deal-image') %>
           <% else %>
-            <img src="http://cdn.playbuzz.com/cdn/0079c830-3406-4c05-a5c1-bc43e8f01479/7dd84d70-768b-492b-88f7-a6c70f2db2e9.jpg"/>
+            <img src="http://placehold.it/300x200">
           <% end %>
           <h4><%= link_to deal.title, deal %></h4>
           <%= shorten(deal.description) %><br>
@@ -59,4 +61,3 @@
     <% end %>
     </div>
   </div>
-</div>

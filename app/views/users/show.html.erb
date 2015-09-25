@@ -15,10 +15,9 @@
           <% end %>
           </ul>
         <% end %>
-      </div>
+        </div>
 
-      <div id="deals">
-
+        <div id="deals">
         <h3>Deals <%= @user.name %> created: </h3>
           <% if @user.owned_deals.empty? %>
             <p>No sponsored deals.</p>
@@ -29,6 +28,8 @@
             <% end %>
             </ul>
           <% end %>
+        </div>
       </div>
+    </div>
   </div>
 </div>

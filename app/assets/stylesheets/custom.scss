@@ -5,13 +5,17 @@ html, body {
   background: #EBEBD3 !important;
 }
 
+/* Flash message styles */
+
 .alert-box {
+  position: relative;
   border-radius: 0 !important;
   margin-bottom: 0;
   text-align: center;
   border: none !important;
   font-weight: bold !important;
   color: #575743 !important;
+  z-index: 75;
 }
 
 .notice {
@@ -22,10 +26,12 @@ html, body {
   background: #FF6B35 !important;
 }
 
+/* navbar styles */
+
 nav {
   padding-top: 10px;
   height: 65px !important;
-  background: #FFFFF2 !important;
+  background: #fff !important;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.33);
   -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.33);
   box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.33);
@@ -33,10 +39,10 @@ nav {
     color: #707070 !important;
     font-weight: bold !important;
     font-size: 15px !important;
-    background: #FFFFF2 !important;
+    background: #fff !important;
   }
   .has-form {
-    background: #FFFFF2 !important
+    background: #fff !important;
   }
   .divider {
     opacity: 0.15;
@@ -75,7 +81,7 @@ nav {
   margin-bottom: 25px;
   width: 100%;
   height: 450px;
-  background: url(deal.jpg) no-repeat center center fixed;
+  background: image-url("deal.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -122,7 +128,7 @@ nav {
     margin-left:auto;
     margin-right:auto;
     top: 255px;
-    width: 300px;
+    width: 400px;
     padding: 10px;
     z-index: 50;
   }
@@ -136,7 +142,6 @@ nav {
 
 /* index page admin box */
 #flags {
-  border: 2px black solid;
   color: red;
   background: #D6FDB2;
 }
@@ -152,7 +157,7 @@ nav {
 
 /* BG color for progress bar. */
 #graph svg {
-  background: grey;
+  background: #D5D5CA;
 }
 
 /* row CSS for Deal boxes on index page. */
@@ -173,8 +178,8 @@ nav {
 
 /* Deal boxes on index page have max height */
 .boxes {
-  min-height: 400px;
-  max-height: 400px;
+  min-height: 410px;
+  max-height: 410px;
   max-width: 320px;
   border: 1px solid #94A9BB;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.75);
@@ -182,6 +187,12 @@ nav {
   box-shadow:         0px 1px 10px 0px rgba(50, 50, 50, 0.75);
   padding: 20px;
   margin: 5px;
+}
+
+.image-box {
+  height: 200px;
+  width: 290px;
+  overflow: hidden;
 }
 
 /* Row of closed deals on front page */
@@ -200,7 +211,7 @@ footer {
   font-family: 'Roboto', sans-serif !important;
   font-size: 15px;
   font-weight: bold;
-  margin-top: 75px;
+  margin-top: 100px;
   height: 200px !important;
   width: 100%;
   background: #94A9BB;
