@@ -1,12 +1,12 @@
 <div class="deal-show">
   <div class="row">
-    <div class="large-9 columns">
+    <div class="large-12 columns profile-page">
       <h1><%= @user.name %></h1>
 
       <%= render 'form_profile' %>
 
       <div class="large-9 columns">
-        <div id="committed_to">
+        <div class="panel">
         <h3><%= @user.deals.count %> deals committed to:</h3>
           <% unless @user.deals.empty? %>
           <ul>
@@ -15,9 +15,7 @@
           <% end %>
           </ul>
         <% end %>
-        </div>
 
-        <div id="deals">
         <h3>Deals <%= @user.name %> created: </h3>
           <% if @user.owned_deals.empty? %>
             <p>No sponsored deals.</p>
