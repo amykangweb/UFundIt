@@ -1,3 +1,126 @@
+<div class="deal-show">
+<div class="row">
+
+  <div class="large-6 columns">
+    <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %><br>
+  </div>
+  <div class="large-6 columns">
+    <div class="panel">
+      <h4>
+        <%= @deal.title %><br>
+        <%= link_to @deal.owner.name, user_show_path(@deal.owner_id), class: "deal-owner-name" %>
+        <hr/>
+      </h4>
+      <p>Commitments Needed:
+      <%= @deal.goal %> at $<%= @deal.amount %></p>
+    <% if !@deal.funded? && @deal.active? %>
+      <%= link_to "Commit!", deal_confirmation_path(@deal), class: "button expand deal-button" %>
+    <% else %>
+      <p>This deal has ended! Find another</p>
+    <% end %>
+      <h4>Progress to Goal:</h4>
+      <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
+
+      <div id="graph">
+      </div>
+      <p class="location-time">
+        <%= @deal.location %> /
+        <% if @deal.active? %>
+          <%= time_ago_in_words(@deal.end) %> left
+        <% else %>
+          Closed
+        <% end %>
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="large-12 small-12 columns">
+    <div class="panel">
+      <h4>
+        Description
+        <hr/>
+      </h4>
+      <h5 class="subheader"><%= @deal.description %></h5>
+      <%= social_share_button_tag(@deal.title) %>
+      <%= link_to "Flag for review", flag_deal_path(@deal), method: :patch %>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="large-6 small-6 columns">
+      <%= render partial: 'comments/form', deal: @deal %>
+    </div>
+    <div class="large-6 small-6 columns">
+    <div class="panel">
+      <h4>Updates</h4>
+      <h6 class="subheader">
+        <% @deal.updates.each do |update| %>
+            <p>
+              <strong>Updated <%= time_ago_in_words(update.created_at) %> ago</strong><br>
+              <%= update.content %><br>
+              <% if policy(update).owner? || policy(@deal).is_admin? %>
+                <%= link_to "Edit", edit_deal_update_path(@deal, update) %> |
+                <%= link_to "Destroy", [@deal, update], method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </p>
+          <% end %>
+        </h6>
+        <div id="owner-actions">
+        <% if policy(@deal).owner? %>
+          <%= link_to 'Post Update', new_deal_update_path(@deal, @update), class: "button deal-button" %>
+        <% end %>
+      </div>
+    </div>
+    </div>
+  </div>
+
+  <% if !@deal.users.empty? %>
+    <div class="row">
+      <div class="large-12 columns backers">
+      <h4>Backers</h4>
+
+      <% @backers.each do |user| %>
+        <div class="large-2 small-2 columns">
+          <%= link_to (image_tag user.gravatar_url) %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  <% end %>
+
+    <% if @deal.private %>
+      <strong>This deal has been flagged as private. Only visitors with the link can access it. Please share with caution.</strong>
+    <% end %>
+    <br>
+    <br>
+
+  </div>
+
+<div id="comments" class="row">
+  <div class="large-12 columns">
+<hr>
+<h4>Comments:</h4>
+
+<% if !@deal.comments.empty? %>
+  <% @deal.comments.each do |comment| %>
+  <div class="panel">
+    <p><strong><%= link_to comment.user.name, comment.user %></strong><br>
+      <strong>Created <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
+      <%= comment.body %><br>
+      <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
+    </p>
+  </div>
+  <% end %>
+<% else %>
+  No Comments
+<% end %>
+</div>
+</div>
+</div>
+
 <div id="control" class="row">
   <div class="large-9 columns">
     <div id="draft-warning">
@@ -8,117 +131,11 @@
 
     <div id="edit-options">
     <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
-      Edit Options:
-      <%= link_to 'Edit Deal', edit_deal_path(@deal), class: "button" %>
-      <%= link_to 'Destroy Deal', @deal, method: :delete, data: { confirm: 'Are you sure?' }, class: "button" %>
-    <% end %>
-    </div>
-
-    <div id="owner-actions">
-    <% if policy(@deal).owner? %>
-      Owner Update:
-      <%= link_to 'Post Update', new_deal_update_path(@deal, @update), class: "button" %>
-      <% if @deal.users.count > 0 %>
-        <p>Contact users who have committed to this deal:</p>
-        <% @deal.users.each do |user| %>
-          <%= link_to user.email, user_show_path(user.id) %>
-        <% end %>
-      <% end %>
+      <%= link_to 'Edit Deal', edit_deal_path(@deal) %> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <%= link_to 'Destroy Deal', @deal, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     </div>
   </div>
-</div>
-
-<div class="row">
-  <hr>
-  <div class="large-2 columns">
-    <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %>
-    <br>
-  </div>
-  <div class="large-5 columns">
-    <img src="http://placehold.it/400x500">
-  </div>
-
-  <div class="large-5 columns">
-    <h3><%= @deal.title %></h3>
-    <p><%= @deal.description %></p>
-    <br>
-    <p>
-    <strong>Deal Updates:</strong>
-    <% @deal.updates.each do |update| %>
-      <p>
-        <strong>Updated <%= time_ago_in_words(update.created_at) %> ago</strong><br>
-        <%= update.content %><br>
-        <% if policy(update).owner? || policy(@deal).is_admin? %>
-          <%= link_to "Edit", edit_deal_update_path(@deal, update) %> |
-          <%= link_to "Destroy", [@deal, update], method: :delete, data: { confirm: "Are you sure?" } %>
-        <% end %>
-      </p>
-    <% end %>
-    </p>
-
-    <p>Deal location: <%= @deal.location %></p>
-
-    <p>
-      <strong>Deal Ends: <%= @deal.end.to_date %></strong>
-    </p>
-
-    <div class="panel">
-      <h5>Get this Deal</h5>
-      <p>Commitments Needed:
-      <%= @deal.goal %> at $<%= @deal.amount %></p>
-    <% if !@deal.funded? && @deal.active? %>
-      <%= link_to "Commit!", deal_confirmation_path(@deal), class: "button" %>
-    <% else %>
-      <p>This deal has ended! Find another</p>
-    <% end %>
-      <h4>Progress to Goal:</h4>
-      <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
-
-      <div id="graph">
-      </div>
-    </div>
-
-    <h4>Share this Deal!</h4>
-    <%= social_share_button_tag(@deal.title) %>
-    <% if @deal.private %>
-      <strong>This deal has been flagged as private. Only visitors with the link can access it. Please share with caution.</strong>
-    <% end %>
-    <br>
-    <br>
-    <%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
-  </div>
-
-  <div class="row">
-    <hr/>
-    <div class="large-6 columns">
-      <strong>Committed</strong>:
-      <% @deal.users.each do |user| %>
-        <p><%= user.name %></p>
-      <% end %>
-    </div>
-    <div class="large-6 columns">
-      <h4>Deal Posted By:</h4>
-      <%= image_tag @deal.owner.gravatar_url %>
-      <%= link_to @deal.owner.name, user_show_path(@deal.owner_id) %>
-    </div>
-  </div>
-</div>
-
-<div id="comments" class="row">
-  <div class="large-9 columns">
-<%= render partial: 'comments/form', deal: @deal %>
-
-<h5>Comments:</h5>
-
-<% @deal.comments.each do |comment| %>
-  <p><strong><%= comment.user.name %></strong><br>
-    Created <%= time_ago_in_words(comment.created_at) %> ago<br>
-    <%= comment.body %><br>
-    <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
-  </p>
-<% end %>
-</div>
 </div>
 
 <script type="text/javascript">
@@ -126,11 +143,11 @@
   current = <%= raw @deal.users.count %>;
   chart = d3.select("#graph")
     .append("svg")
-    .attr("width", 200)
+    .attr("width", 415)
     .attr("height", 20);
 
     chart.append("rect")
     .attr("height", 20)
-    .attr("width", (current/goal) * 200)
-    .style("fill", "red");
+    .attr("width", (current/goal) * 415)
+    .style("fill", "#FF6B35");
 </script>

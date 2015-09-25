@@ -23,6 +23,7 @@ class DealsController < ApplicationController
   def show
     @comment = Comment.new
     @update = Update.new
+    @backers = @deal.users.limit(6)
   end
 
   def flag

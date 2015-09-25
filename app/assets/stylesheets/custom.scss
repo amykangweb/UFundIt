@@ -2,16 +2,20 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 
 html, body {
-  background: #FFFFF2 !important;
+  background: #fff !important;
 }
 
+/* Flash message styles */
+
 .alert-box {
+  position: relative;
   border-radius: 0 !important;
   margin-bottom: 0;
   text-align: center;
   border: none !important;
   font-weight: bold !important;
   color: #575743 !important;
+  z-index: 75;
 }
 
 .notice {
@@ -22,10 +26,12 @@ html, body {
   background: #FF6B35 !important;
 }
 
+/* navbar styles */
+
 nav {
   padding-top: 10px;
   height: 65px !important;
-  background: #FFFFF2 !important;
+  background: #fff !important;
   -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.33);
   -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.33);
   box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.33);
@@ -33,10 +39,10 @@ nav {
     color: #707070 !important;
     font-weight: bold !important;
     font-size: 15px !important;
-    background: #FFFFF2 !important;
+    background: #fff !important;
   }
   .has-form {
-    background: #FFFFF2 !important
+    background: #fff !important;
   }
   .divider {
     opacity: 0.15;
@@ -122,7 +128,7 @@ nav {
     margin-left:auto;
     margin-right:auto;
     top: 255px;
-    width: 300px;
+    width: 400px;
     padding: 10px;
     z-index: 50;
   }
@@ -136,7 +142,7 @@ nav {
 
 /* BG color for progress bar. */
 #graph svg {
-  background: grey;
+  background: #D5D5CA;
 }
 
 /* row CSS for Deal boxes on index page. */
