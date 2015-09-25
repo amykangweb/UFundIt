@@ -1,5 +1,4 @@
 <div class="deal-show">
-<<<<<<< HEAD
 <div class="row">
 
   <% if @deal.image? %>
@@ -30,17 +29,16 @@
 
         <div id="graph">
         </div>
-      </div>
 
-      <p class="location-time">
-        <%= @deal.location %> /
-        <% if @deal.active? %>
-          <%= time_ago_in_words(@deal.end) %> left
-        <% else %>
-          Closed
-        <% end %>
-      </p>
-    </div>
+        <p class="location-time">
+          <%= @deal.location %> /
+          <% if @deal.active? %>
+            <%= time_ago_in_words(@deal.end) %> left
+          <% else %>
+            Closed
+          <% end %>
+        </p>
+      </div>
   </div>
 </div>
 
