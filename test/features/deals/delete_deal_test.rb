@@ -6,6 +6,6 @@ feature "Deleting a deal" do
     sign_in(:jeff)
     click_link "Profile"
     click_link "Widgets"
-    page.text.wont_include "Destroy"
+    page.text.wont_include "Destroy Deal"
   end
 end

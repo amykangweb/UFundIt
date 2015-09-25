@@ -22,7 +22,7 @@ feature "Authentication::ProfilePage" do
     #in deals sponsored list:
     page.text.must_include 'Widgets'
     #in deals committed to list:
-    page.text.must_include "No deal commitments."
+    page.text.must_include "0 deals committed to"
   end
 
   scenario "with a committer and non-owner" do

@@ -7,7 +7,7 @@ feature "Editing a deal" do
     sign_in(:jeff)
     click_link "Profile"
     click_link "Widgets"
-    page.text.wont_include "Edit"
+    page.text.wont_include "Edit Deal"
   end
 
   scenario "is not allowed to visitors" do
