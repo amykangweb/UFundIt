@@ -14,7 +14,6 @@
     <div class="panel">
       <h4>
         <%= @deal.title %><br>
-        <%= link_to @deal.owner.name, user_show_path(@deal.owner_id), class: "deal-owner-name" %>
         <hr/>
       </h4>
       <p>Commitments Needed:
@@ -27,7 +26,7 @@
       <h4>Progress to Goal:</h4>
       <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
 
-        <div id="graph">
+        <div id="graph" data-goal="<%= @deal.goal %>" data-users="<%= @deal.users.count %>">
         </div>
 
         <p class="location-time">
@@ -144,17 +143,3 @@
     </div>
   </div>
 </div>
-
-<script type="text/javascript">
-  goal = <%= raw @deal.goal %>;
-  current = <%= raw @deal.users.count %>;
-  chart = d3.select("#graph")
-    .append("svg")
-    .attr("width", 415)
-    .attr("height", 20);
-
-    chart.append("rect")
-    .attr("height", 20)
-    .attr("width", (current/goal) * 415)
-    .style("fill", "#FF6B35");
-</script>

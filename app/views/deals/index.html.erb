@@ -1,4 +1,3 @@
-<div class="deal-show">
   <div class="billboard">
     <div class="text-container">
     </div>
@@ -30,7 +29,9 @@
       <% if deal.active? && !deal.funded? %>
         <div class="large-4 medium-5 small-6-centered columns boxes">
           <% if deal.image? %>
-            <%= image_tag(deal.image.url, id: 'deal-image') %>
+            <div class="image-box">
+              <%= image_tag(deal.image.url, id: 'deal-image') %>
+            </div>
           <% else %>
             <img src="http://placehold.it/300x200">
           <% end %>
@@ -60,4 +61,3 @@
     <% end %>
     </div>
   </div>
-</div>
