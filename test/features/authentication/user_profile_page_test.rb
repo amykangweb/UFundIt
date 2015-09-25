@@ -44,7 +44,7 @@ feature "Authentication::ProfilePage" do
     #in deals sponsored list:
     page.text.must_include "No sponsored deals."
     #in deals committed to list:
-    page.text.must_include "No deal commitments."
+    page.text.must_include "0 deals committed to"
   end
 end
 
