@@ -3,7 +3,7 @@ require "test_helper"
 feature "Deals::ShowADeal" do
   scenario "anyone can view deals" do
     visit root_path
-    page.must_have_content "Deals on Demand."
+    page.must_have_content "Set your Ideas on Fire!"
   end
 
   scenario "anyone can see list of who is supporting a deal" do
