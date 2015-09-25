@@ -12,8 +12,8 @@
       <p>Are you sure?</p>
 
       <p>
-        <%= link_to commit_deal_path(@deal), method: :patch do %>
-          <%= image_tag('paypal.gif') %>
+        <%= link_to commit_deal_path(@deal), method: :patch, class: "paypal" do %>
+          <%= image_tag('paypal.gif', alt: "Paypal") %>
         <% end %>
       </p>
 

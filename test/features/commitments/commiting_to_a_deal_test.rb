@@ -8,7 +8,8 @@ feature "Commitments::CommitingToADeal" do
     page.text.must_include "Commit!"
     click_on "Commit!"
     page.text.must_include "Are you sure?"
-    click_on "Commit!"
+    find(".paypal").click
+    save_and_open_page
     page.text.must_include "Committed!"
     page.text.must_include users(:user).name
   end
