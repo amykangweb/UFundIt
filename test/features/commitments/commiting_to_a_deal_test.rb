@@ -20,7 +20,7 @@ feature "Commitments::CommitingToADeal" do
   end
 
   scenario "user can't commit to a deal if goal is met" do
-    skip
+    skip # this is on skip because the funded fixture breaks everything. but it works in the app!
     deal = deals(:funded)
     visit deal_path(deal.id)
     page.text.wont_include "Commit!"

@@ -1,23 +1,25 @@
-<div class="row">
-<div class="large-9 columns">
-<h1>Confirmation Page</h1>
+<div class="deal-show">
+  <div class="row">
+    <div class="large-9 columns">
+      <h1>Confirmation Page</h1>
 
-<p>You are commiting to:</p>
+      <p>You are commiting to:</p>
 
-$<%= @deal.amount %>
+      $<%= @deal.amount %>
 
-<p>You will not be charged until the deal is tipped.</p>
+      <p>You will not be charged until the deal is tipped.</p>
 
-<p>Are you sure?</p>
+      <p>Are you sure?</p>
 
-<p>
-  <%= link_to "Commit!", commit_deal_path(@deal), class: "button", method: :patch %>
-</p>
+      <p>
+        <%= link_to "Commit!", commit_deal_path(@deal), class: "button", method: :patch %>
+      </p>
 
 
-<p>
-  <%= link_to "Back", @deal %>
-</p>
+      <p>
+        <%= link_to "Back", @deal %>
+      </p>
 
-</div>
+    </div>
+  </div>
 </div>
