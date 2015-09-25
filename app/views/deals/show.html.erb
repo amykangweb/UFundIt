@@ -1,5 +1,21 @@
 <div class="deal-show">
 <div class="row">
+    <div id="draft-warning">
+    <% if !@deal.published %>
+      <h1>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin (or deal owner can post an update).</h1>
+    <% end %>
+    </div>
+
+    <div id="control" class="row">
+      <div class="large-9 columns">
+        <div id="edit-options">
+        <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
+          <%= link_to 'Edit Deal', edit_deal_path(@deal), class: "button ed-button" %> &nbsp;&nbsp;&nbsp;&nbsp;
+          <%= link_to 'Destroy Deal', @deal, class: "button ed-button",method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+      </div>
+    </div>
 
   <% if @deal.image? %>
     <div class="large-6 columns deal-large-image">
@@ -131,16 +147,10 @@
 
 <div id="control" class="row">
   <div class="large-9 columns">
-    <div id="draft-warning">
-    <% if !@deal.published %>
-      <p><strong>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin (or deal owner can post an update).</strong></p>
-    <% end %>
-    </div>
-
     <div id="edit-options">
     <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
-      <%= link_to 'Edit Deal', edit_deal_path(@deal) %> &nbsp;&nbsp;|&nbsp;&nbsp;
-      <%= link_to 'Destroy Deal', @deal, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Edit Deal', edit_deal_path(@deal), class: "button ed-button" %> &nbsp;&nbsp;&nbsp;&nbsp;
+      <%= link_to 'Destroy Deal', @deal, class: "button ed-button",method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
     </div>
   </div>

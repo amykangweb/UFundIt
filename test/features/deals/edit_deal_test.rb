@@ -40,7 +40,7 @@ feature "Editing a deal" do
     fill_in "Location", with: deals(:widgets).location
     fill_in "Amount", with: deals(:widgets).amount
     click_button "Preview / Publish"
-    click_on "Edit Deal"
+    first(:link, "Edit").click
     fill_in "Title", with: "Amazing Toaster Oven"
     check "Published?"
     click_on "Preview / Publish"
@@ -64,7 +64,7 @@ feature "Editing a deal" do
     sign_in(:jeff)
     click_on "View My Profile"
     click_on "My new deal"
-    click_on "Edit Deal"
+    first(:link, "Edit").click
     check "Published?"
     click_on "Preview / Publish"
     page.text.must_include "Deal was successfully updated."

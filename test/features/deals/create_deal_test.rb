@@ -36,7 +36,7 @@ feature 'Create A Deal' do
     page.text.must_include "Deal was successfully created"
     page.text.must_include "Widgets"
     page.text.must_include "This Deal is Not Yet Published!"
-    click_link "Edit"
+    first(:link, "Edit").click
     check "Published?"
     click_on "Preview / Publish"
     page.text.must_include "Deal was successfully updated."
