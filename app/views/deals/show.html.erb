@@ -2,7 +2,7 @@
 <div class="row">
 
   <% if @deal.image? %>
-    <div class="large-6 columns">
+    <div class="large-6 columns deal-large-image">
       <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %><br>
     </div>
   <% else %>
