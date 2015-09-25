@@ -14,6 +14,7 @@
     <div class="panel">
       <h4>
         <%= @deal.title %><br>
+        <%= link_to @deal.owner.name, @deal.owner, class: "deal-owner-name" %>
         <hr/>
       </h4>
       <p>Commitments Needed:
@@ -89,8 +90,9 @@
       <h4>Backers</h4>
 
       <% @backers.each do |user| %>
-        <div class="large-2 small-2 columns">
-          <%= link_to (image_tag user.gravatar_url) %>
+        <div class="large-2 small-2 columns text-center">
+          <%= link_to (image_tag user.gravatar_url), user %><br>
+          <strong><%= link_to user.name, user %></strong>
         </div>
       <% end %>
       </div>
