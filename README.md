@@ -10,9 +10,9 @@ Individuals, small business owners and entrepreneurs can use the tool to collabo
 
 ## Collaborators
 
-* [Brian Ray](https://github.com/brayzen)
 * [Mary Dickson](https://github.com/marythought)
 * [Amy Kang](http://www.amykang.net/)
+* [Brian Ray](https://github.com/brayzen)
 
 ## Usage
 Run `rake test` to test.
