@@ -1,5 +1,6 @@
 <div class="row">
 <div class="large-9 columns">
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -29,10 +30,11 @@
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "button" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
 </div>
 </div>

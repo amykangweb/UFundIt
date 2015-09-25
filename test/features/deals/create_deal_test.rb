@@ -3,18 +3,17 @@ require 'test_helper'
 feature 'Create A Deal' do
   scenario 'logged in user can create a deal' do
     sign_in
-    visit deals_path
     click_on "New Deal"
     fill_in "Title", with: deals(:widgets).title
-    page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
     fill_in "Description", with: deals(:widgets).description
     fill_in "Goal", with: deals(:widgets).goal
     fill_in "Location", with: deals(:widgets).location
     fill_in "Amount", with: deals(:widgets).amount
-    click_on "Preview / Publish"
+    click_button "Preview / Publish"
     page.text.must_include "Deal was successfully created"
     page.text.must_include "Widgets"
-    page.find('#deal-image')['src'].must_include 'cat.jpg'
+    # page.find('#deal-image')['src'].must_include 'cat.jpg'
   end
 
   scenario 'visitor must log in to create a deal' do
@@ -28,7 +27,7 @@ feature 'Create A Deal' do
     visit deals_path
     click_on "New Deal"
     fill_in "Title", with: deals(:widgets).title
-    page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
     fill_in "Description", with: deals(:widgets).description
     fill_in "Goal", with: deals(:widgets).goal
     fill_in "Location", with: deals(:widgets).location
