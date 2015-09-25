@@ -42,4 +42,38 @@ feature 'Create A Deal' do
     page.text.must_include "Deal was successfully updated."
     page.text.wont_include "This Deal is Not Yet Published!"
   end
+
+  scenario 'public deals get added to index page' do
+    sign_in
+    visit deals_path
+    click_on "New Deal"
+    fill_in "Title", with: deals(:widgets).title
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    fill_in "Description", with: deals(:widgets).description
+    fill_in "Goal", with: deals(:widgets).goal
+    fill_in "Location", with: deals(:widgets).location
+    fill_in "Amount", with: deals(:widgets).amount
+    check "Published?"
+    click_on "Preview / Publish"
+    visit root_path
+    page.text.must_include deals(:widgets).title
+  end
+
+  scenario 'private deals stay off the index page' do
+    sign_in
+    visit deals_path
+    click_on "New Deal"
+    fill_in "Title", with: "My private deal title"
+    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    fill_in "Description", with: deals(:widgets).description
+    fill_in "Goal", with: deals(:widgets).goal
+    fill_in "Location", with: deals(:widgets).location
+    fill_in "Amount", with: deals(:widgets).amount
+    check "Private?"
+    check "Published?"
+    click_on "Preview / Publish"
+    visit root_path
+    page.text.wont_include "My private deal title"
+  end
+
 end
