@@ -1,10 +1,9 @@
-<div class="deal-show">
   <div class="billboard">
     <div class="text-container">
     </div>
     <h1>
-      Deals on Demand.
-      <p>To lower the barriers of promoting and funding for any beneficial cause.</p>
+      Set your Ideas on Fire!
+      <p>Real Power comes from the alignment of people with a common goal. Let IgniteBot do the heavy lifting!</p>
     </h1>
     <% if !user_signed_in? %>
       <%= link_to "Sign Up for Free!", new_user_registration_path, class: "button large sign-up-btn" %>
@@ -30,12 +29,14 @@
       <% if deal.active? && !deal.funded? %>
         <div class="large-4 medium-5 small-6-centered columns boxes">
           <% if deal.image? %>
-            <%= image_tag(deal.image.url, id: 'deal-image') %>
+            <div class="image-box">
+              <%= image_tag(deal.image.url, id: 'deal-image') %>
+            </div>
           <% else %>
             <img src="http://placehold.it/300x200">
           <% end %>
           <h4><%= link_to deal.title, deal %></h4>
-          <%= shorten(deal.description) %><br>
+          <%= shorten(deal.description) %>...<br>
           <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
           <%= deal.location %> / <%= time_ago_in_words(deal.end) %> left
         </div>
@@ -47,12 +48,14 @@
       <% if deal.archived? || deal.funded? %>
         <div class="large-4 medium-5 small-6 columns boxes">
           <% if deal.image? %>
-            <%= image_tag(deal.image.url, id: 'deal-image') %>
+            <div class="image-box">
+              <%= image_tag(deal.image.url, id: 'deal-image') %>
+            </div>
           <% else %>
             <img src="http://placehold.it/300x200">
           <% end %>
           <h4><%= link_to deal.title, deal %></h4>
-          <%= shorten(deal.description) %><br>
+          <%= shorten(deal.description) %>...<br>
           <h5><%= deal.users.count %> / <%= deal.goal %> Committed!</h5>
           <%= deal.location %> / Closed
         </div>
@@ -60,4 +63,3 @@
     <% end %>
     </div>
   </div>
-</div>

@@ -9,8 +9,5 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
-  # alias_method :facebook, :all
-  alias_method :paypal, :all
   alias_method :facebook, :all
-  alias_method :twitter, :all
 end
