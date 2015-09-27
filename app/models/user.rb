@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :deals, through: :commitments
   has_many :comments, dependent: :destroy
   has_many :owned_deals, class_name: "Deal", foreign_key: 'owner_id'
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable, :omniauthable,
@@ -25,11 +25,10 @@ class User < ActiveRecord::Base
   end
 
   def self.from_omniauth(auth)
-    logger.info auth.inspect
-    where(email: auth.info.email).first || where(name: auth.info.nickname).first_or_create do |user|
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider
       user.uid = auth.uid
-      user.name = auth.info.nickname
+      user.name = auth.info.first_name
       user.email = auth.info.email
     end
   end
