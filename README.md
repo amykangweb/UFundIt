@@ -1,8 +1,10 @@
 # UFundIt
 
-<h2>Description</h2>
+<h2>Information</h2>
 
 A crowdfunding site built with Ruby on Rails.
+
+https://u-fund-it.herokuapp.com/
 
 ## Collaborators
 
