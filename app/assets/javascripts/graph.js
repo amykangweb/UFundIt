@@ -9,5 +9,5 @@ $(document).ready(function() {
     chart.append("rect")
     .attr("height", 20)
     .attr("width", (current/goal) * 415)
-    .style("fill", "#FF6B35");
+    .style("fill", "#B4656F");
 });
