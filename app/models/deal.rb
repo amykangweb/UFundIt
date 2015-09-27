@@ -40,6 +40,10 @@
     self.flag
   end
 
+  def progress
+    (self.users.count.to_f / self.goal) * 250
+  end
+
   private
 
   def date_validation
