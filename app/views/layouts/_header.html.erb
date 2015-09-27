@@ -2,7 +2,7 @@
   <nav class="top-bar" data-topbar role="navigation">
     <!-- Title -->
     <ul class="title-area">
-      <li class="name"><h1><%= link_to "IgniteBot", root_path %></h1></li>
+      <li class="name"><h1><%= link_to "UFundIt", root_path %></h1></li>
 
       <!-- Mobile Menu Toggle -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -28,7 +28,7 @@
           </div>
         </li>
         <li class="divider"></li>
-        <li>
+        <li style="background: transparent">
           <%= link_to "About Us", pages_about_path %>
         </li>
         <li class="divider"></li>
@@ -38,18 +38,28 @@
       <ul class="right">
         <!-- Divider -->
         <li class="divider"></li>
-        <li><%= link_to "New Deal", new_deal_path %></li>
+        <li style="background: transparent">
+          <%= link_to "New Deal", new_deal_path %>
+        </li>
         <li class="divider"></li>
 
         <!-- Anchor -->
         <% if current_user && user_signed_in? %>
-          <li><%= link_to 'View My Profile', current_user %></li>
+          <li style="background: transparent">
+            <%= link_to 'View My Profile', current_user %>
+          </li>
           <li class="divider"></li>
-          <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          <li style="background: transparent">
+            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+          </li>
         <% else %>
-          <li><%= link_to 'Sign up', new_user_registration_path %></li>
+          <li style="background: transparent">
+            <%= link_to 'Sign up', new_user_registration_path %>
+          </li>
           <li class="divider"></li>
-          <li><%= link_to 'Log in', new_user_session_path %></li>
+          <li style="background: transparent">
+            <%= link_to 'Log in', new_user_session_path %>
+          </li>
         <% end %>
       </ul>
     </section>
