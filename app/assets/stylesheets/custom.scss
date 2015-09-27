@@ -31,33 +31,33 @@ html, body {
 nav {
   padding-top: 10px;
   height: 65px !important;
-  background: #fff !important;
-  -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.33);
-  -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.33);
-  box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.33);
+  background: rgba(0, 0, 0, 0.75) !important;
+  // -webkit-box-shadow: 0px 3px 5px 0px rgba(50, 50, 50, 0.33);
+  // -moz-box-shadow:    0px 3px 5px 0px rgba(50, 50, 50, 0.33);
+  // box-shadow:         0px 3px 5px 0px rgba(50, 50, 50, 0.33);
   li a {
-    color: #707070 !important;
+    color: rgb(150, 150, 150) !important;
     font-weight: bold !important;
     font-size: 15px !important;
-    background: #fff !important;
+    background: transparent !important;
   }
   .has-form {
-    background: #fff !important;
+    background: transparent !important;
   }
   .divider {
     opacity: 0.15;
   }
   .search {
-    background: #7C8D9B;
+    background: #469378;
     &:hover {
-      background: #94A9BB;
+      background: #B4656F;
     }
   }
 }
 
 .top-bar {
   width: 100% !important;
-  background: #FFFFF2;
+  background: rgba(0, 0, 0, 0.75) !important;
   height: 75px;
   z-index: 200;
   h1 {
@@ -65,9 +65,11 @@ nav {
       font-family: 'Passion One', cursive !important;
       font-size: 2rem !important;
       font-weight: normal !important;
-      color: #7C8D9B!important;
+      // color: #7C8D9B!important;
+      color: #469378 !important;
+      transition: color 0.5s;
       &:hover {
-        opacity: 0.75;
+        color: #B4656F !important;
       }
     }
   }
@@ -77,10 +79,10 @@ nav {
 .billboard {
   position: relative;
   text-align: center;
-  margin-top: -20px;
+  margin-top: -65px;
   margin-bottom: 25px;
   width: 100%;
-  height: 450px;
+  height: 475px;
   background: image-url("deal.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -89,7 +91,7 @@ nav {
   h1 {
     font-family: 'Passion One', cursive;
     position: absolute;
-    top: 125px;
+    top: 160px;
     left:0;
     right:0;
     margin-left:auto;
@@ -105,17 +107,20 @@ nav {
   .sign-up-btn {
     font-family: 'Passion One', cursive;
     position: absolute;
-    background: #D6FDB2;
+    background: #B4656F;
     left:0;
     right:0;
     margin-left:auto;
     margin-right:auto;
-    top: 255px;
+    top: 290px;
     width: 225px;
-    padding: 10px;
+    padding: 20px 10px 20px 10px;
     z-index: 50;
     &:hover {
-      background: #A7D9C3;
+      background: #469378;
+    }
+    &:visited {
+      color: #fff !important;
     }
   }
   .welcome {
@@ -127,15 +132,14 @@ nav {
     color: #fff;
     margin-left:auto;
     margin-right:auto;
-    top: 255px;
+    top: 290px;
     padding: 10px;
     z-index: 50;
   }
   .text-container {
-    height: 450px;
+    height: 475px;
     width: 100%;
-    background: #94A9BB;
-    opacity: 0.9;
+    background: rgba(0, 0, 0, 0.75);
   }
 }
 
@@ -193,7 +197,7 @@ nav {
 
 .image-box {
   height: 200px;
-  width: 290px;
+  width: 280px;
   overflow: hidden;
 }
 
@@ -206,7 +210,7 @@ nav {
   width: 250px;
   background: black;
   z-index: 1;
-  margin-left: 15px;
+  margin-left: 10px;
 }
 
 .so-far {
@@ -245,7 +249,7 @@ footer {
   margin-top: 100px;
   height: 200px !important;
   width: 100%;
-  background: #94A9BB;
+  background: rgb(0, 0, 0);
   padding-top: 75px;
   text-align: center;
 }
