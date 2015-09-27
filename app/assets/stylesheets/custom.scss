@@ -5,7 +5,6 @@ html, body {
   background: #fff !important;
 }
 
-
 /* Flash message styles */
 
 .alert-box {
@@ -170,6 +169,7 @@ nav {
   }
   h5 {
     font-family: 'Passion One', cursive;
+    margin-top: 10px;
   }
   .sub-title {
     font-size: 30px;
@@ -178,9 +178,11 @@ nav {
 
 /* Deal boxes on index page have max height */
 .boxes {
-  min-height: 410px;
-  max-height: 410px;
+  position: relative;
+  min-height: 450px;
+  max-height: 450px;
   max-width: 320px;
+  min-width: 320px;
   border: 1px solid #94A9BB;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 1px 10px 0px rgba(50, 50, 50, 0.75);
@@ -193,6 +195,31 @@ nav {
   height: 200px;
   width: 290px;
   overflow: hidden;
+}
+
+/* Index page progress bar styles */
+
+#progress-bar {
+  position: absolute;
+  bottom: 40px;
+  height: 20px;
+  width: 250px;
+  background: black;
+  z-index: 1;
+  margin-left: 15px;
+}
+
+.so-far {
+  position: absolute;
+  height: 20px;
+  background: red;
+  z-index: 10;
+}
+
+.location {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
 }
 
 /* Row of closed deals on front page */
