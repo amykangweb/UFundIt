@@ -1,33 +1,30 @@
 <div class="deal-show">
   <div class="row">
     <div class="large-12 columns profile-page">
-      <h1><%= @user.name %></h1>
 
-      <%= render 'form_profile' %>
+      <%= render 'profile' %>
 
       <div class="large-9 columns">
         <div class="panel">
-        <h3><%= @user.deals.count %> deals committed to:</h3>
-          <% unless @user.deals.empty? %>
-          <ul>
-          <% @user.deals.each do |deal| %>
-            <li><%= link_to deal.title, deal %></li>
-          <% end %>
-          </ul>
-        <% end %>
-
-        <h3>Deals <%= @user.name %> created: </h3>
-          <% if @user.owned_deals.empty? %>
-            <p>No sponsored deals.</p>
-          <% else %>
-            <ul>
-            <% @user.owned_deals.each do |deal| %>
-              <li><%= link_to deal.title, deal %></li>
+          <h1>Posted Deals</h1>
+            <% if @user.owned_deals %>
+              <% @user.owned_deals.each do |deal| %>
+                <p><%= link_to deal.title, deal %></p>
+              <% end %>
+            <% else %>
+              Nothing here
             <% end %>
-            </ul>
-          <% end %>
+
+            <h1>Committed Deals</h1>
+              <% if @user.deals %>
+                <% @user.deals.uniq.each do |deal| %>
+                  <p><%= link_to deal.title, deal %></p>
+                <% end %>
+              <% else %>
+                Nothing here
+              <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
