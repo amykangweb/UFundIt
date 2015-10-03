@@ -4,7 +4,7 @@
 
       <%= render 'profile' %>
 
-      <div class="large-9 columns">
+      <div class="large-5 columns">
         <div class="panel">
           <h1>Posted Deals</h1>
             <% if @user.owned_deals %>
@@ -14,7 +14,10 @@
             <% else %>
               Nothing here
             <% end %>
-
+          </div>
+        </div>
+        <div class="large-5 columns">
+          <div class="panel">
             <h1>Committed Deals</h1>
               <% if @user.deals %>
                 <% @user.deals.uniq.each do |deal| %>
@@ -23,8 +26,9 @@
               <% else %>
                 Nothing here
               <% end %>
+            </div>
           </div>
-        </div>
+
       </div>
     </div>
   </div>
