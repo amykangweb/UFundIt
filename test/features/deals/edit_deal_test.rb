@@ -34,7 +34,7 @@ feature "Editing a deal" do
     sign_in(:jeff)
     click_on "New Deal"
     fill_in "Title", with: "My new deal"
-    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
     fill_in "Description", with: deals(:widgets).description
     fill_in "Goal", with: deals(:widgets).goal
     fill_in "Location", with: deals(:widgets).location
@@ -54,15 +54,15 @@ feature "Editing a deal" do
     sign_in(:jeff)
     click_on "New Deal"
     fill_in "Title", with: "My new deal"
-    # page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
+    page.attach_file('deal[image]', Rails.root + 'test/fixtures/cat.jpg')
     fill_in "Description", with: deals(:widgets).description
     fill_in "Goal", with: deals(:widgets).goal
     fill_in "Location", with: deals(:widgets).location
     fill_in "Amount", with: deals(:widgets).amount
     click_button "Preview / Publish"
-    click_link('Sign out')
+    click_link('Sign Out')
     sign_in(:jeff)
-    click_on "View My Profile"
+    click_on "My Profile"
     click_on "My new deal"
     first(:link, "Edit").click
     check "Published?"
