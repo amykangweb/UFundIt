@@ -1,6 +1,7 @@
 /* Styles for Deal Show page */
 
 .deal-show {
+  position: relative;
   margin-top: 50px;
 }
 
@@ -8,6 +9,10 @@
   width: 500px;
   height: 300px;
   overflow: hidden;
+}
+
+.draft-warning {
+  font-family: 'Roboto', sans-serif !important;
 }
 
 .main-deal-box {
@@ -22,12 +27,10 @@
 }
 
 .panel {
+  position: relative;
   font-family: 'Roboto', sans-serif !important;
-  border: 5px solid #D6FDB2 !important;
+  border: 1px solid #CCCCB2 !important;
   background: #fff !important;
-  -webkit-box-shadow: 0px 1px 10px 0px rgba(50, 50, 50, 0.75);
-  -moz-box-shadow:    0px 1px 10px 0px rgba(50, 50, 50, 0.75);
-  box-shadow:         0px 1px 10px 0px rgba(50, 50, 50, 0.75);
   h4 {
     font-family: 'Passion One', cursive;
     margin-bottom: 10px;
@@ -36,9 +39,9 @@
   }
   .deal-button {
     font-family: 'Passion One', cursive;
-    background: #FF6B35;
+    background: #B4656F;
     &:hover {
-      background: #94A9BB;
+      background: #469378;
     }
     &:visited {
       color: #fff !important;
@@ -51,6 +54,12 @@
   }
 }
 
+.flag-deal{
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+}
+
 .leave-comment {
   font-family: 'Roboto', sans-serif !important;
   font-weight: bold !important;
@@ -59,9 +68,9 @@
 
 .comment-button {
   font-family: 'Passion One', cursive !important;
-  background: #7C8D9B !important;
+  background: #469378 !important;
   &:hover {
-    background: #94A9BB !important;
+    background: #B4656F !important;
   }
 }
 
@@ -87,6 +96,6 @@
   }
 }
 
-#edit-options {
-  margin-top: 50px;
+.control {
+  margin-bottom: 20px;
 }

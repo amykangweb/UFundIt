@@ -1,6 +1,6 @@
 <div class="deal-show">
   <div class="row">
-    <div class="large-9 columns">
+    <div class="large-12 small-12 columns deal-form">
 
       <h2>Forgot your password?</h2>
 
@@ -8,12 +8,12 @@
         <%= devise_error_messages! %>
 
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email %>
           <%= f.email_field :email, autofocus: true %>
         </div>
 
         <div class="actions">
-          <%= f.submit "Send me reset password instructions" %>
+          <%= f.submit "Send me reset password instructions", class: "button user-update-button" %>
         </div>
       <% end %>
 

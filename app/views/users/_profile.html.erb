@@ -1,0 +1,15 @@
+<aside class="large-2 columns">
+  <ul class="side-nav">
+      <li><h1><%= @user.name %></h1></li>
+      <li> <%= gravatar_for(@user)%> </li>
+      <li><%= @user.name %></li>
+      <li><%= @user.email %></li>
+      <% if current_user == @user %>
+        <li><%= link_to "Settings", edit_user_registration_path %></li>
+      <% end %>
+  </ul>
+
+    <h5>User Stats</h5>
+    Deals: <%= @user.owned_deals.count %><br>
+    Committed: <%= @user.deals.count %>
+</aside>

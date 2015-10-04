@@ -1,6 +1,3 @@
-<div class="row">
-<div class="large-9 columns">
-
 <%= form_for(@deal, html: { multipart: true }) do |f| %>
   <% if @deal.errors.any? %>
     <div id="error_explanation">
@@ -15,48 +12,48 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, '*Title' %><br>
-      <p>(60 characters max)</p>
+    <%= f.label :title, '*Title' %>
+    (60 characters max)
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label :image %>
     <%= f.file_field :image, accept: 'image/jpeg,image/gif,image/png' %>
   </div>
   <div class="field">
-    <%= f.label :description, '*Description' %><br>
+    <%= f.label :description, '*Description' %>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :goal, '*Goal' %><br>
-    <p>How many commitments do you need to tip this deal?</p>
+    <%= f.label :goal, '*Goal' %>
+    How many commitments do you need to tip this deal?
     <%= f.number_field :goal %>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
+    <%= f.label :location %>
     <%= f.text_field :location %>
   </div>
   <div class="field">
-    <%= f.label :start, '*Deal Start Date' %><br>
+    <%= f.label :start, '*Deal Start Date' %>
     <%= f.date_select :start %>
   </div>
   <div class="field">
-    <%= f.label :end, '*Deal End Date (30 day default)' %><br>
+    <%= f.label :end, '*Deal End Date (30 day default)' %>
     <%= f.date_select :end, :default => 30.days.from_now %>
   </div>
   <div class="field">
-    <%= f.label :private, 'Private?'%><br>
-    <p> Private deals can be shared but are not searchable or listed on the index. </p>
+    <%= f.label :private, 'Private?'%>
+    Private deals can be shared but are not searchable or listed on the index.
     <%= f.check_box :private %>
   </div>
   <div class="field">
-    <%= f.label :amount, '*Amount' %><br>
-    <p> Dollar amount required for each commitment </p>
+    <%= f.label :amount, '*Amount' %>
+    Dollar amount required for each commitment
     <%= f.number_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :published, 'Published?' %><br>
-    <p>Click here only when you are ready to publish. Published deals will be available to support immediately. To preview your deal, click below with this box unchecked. Deals cannot be unpublished! </p>
+    <%= f.label :published, 'Published?' %>
+    Click here only when you are ready to publish. Published deals will be available to support immediately. To preview your deal, click below with this box unchecked. Deals cannot be unpublished!
     <%= f.check_box :published %>
   </div>
 
@@ -65,5 +62,3 @@
   </div>
   <p>* Required fields</p>
 <% end %>
-</div>
-</div>

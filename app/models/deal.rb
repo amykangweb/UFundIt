@@ -21,7 +21,7 @@
   end
 
   def funded?
-    self.users.count >= self.goal
+    self.users.count == self.goal
   end
 
   def active? # published and not expired

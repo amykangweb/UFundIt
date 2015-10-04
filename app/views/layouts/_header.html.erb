@@ -46,19 +46,19 @@
         <!-- Anchor -->
         <% if current_user && user_signed_in? %>
           <li style="background: transparent">
-            <%= link_to 'View My Profile', current_user %>
+            <%= link_to 'My Profile', current_user %>
           </li>
           <li class="divider"></li>
           <li style="background: transparent">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
           </li>
         <% else %>
           <li style="background: transparent">
-            <%= link_to 'Sign up', new_user_registration_path %>
+            <%= link_to 'Sign Up', new_user_registration_path %>
           </li>
           <li class="divider"></li>
           <li style="background: transparent">
-            <%= link_to 'Log in', new_user_session_path %>
+            <%= link_to 'Log In', new_user_session_path %>
           </li>
         <% end %>
       </ul>
