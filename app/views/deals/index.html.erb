@@ -24,8 +24,9 @@
   </div>
 
   <div class="row deal-boxes">
-    <h4 class="sub-title">Active Deals</h4>
+    <h4 class="sub-title">Recent Deals</h4>
     <% @deals.each do |deal| %>
+      <% if deal.active? %>
         <div class="large-4 medium-5 small-6-centered columns boxes">
           <% if deal.image? %>
             <div class="image-box">
@@ -44,8 +45,14 @@
               </span>
             </div>
 
-          <span class="location"><%= deal.location %> / <%= time_ago_in_words(deal.end) %> left</span>
+          <span class="location"><%= deal.location %> /
+            <% if deal.funded? %>
+              Funded!
+            <% else %>
+              <%= time_ago_in_words(deal.end) %> left</span>
+            <% end %>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>

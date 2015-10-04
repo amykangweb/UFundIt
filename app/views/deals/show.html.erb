@@ -1,22 +1,24 @@
 <div class="deal-show">
-<div class="row">
-    <div id="draft-warning">
-      <% if !@deal.published %>
-        <h1>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin (or deal owner can post an update).</h1>
-      <% end %>
-    </div>
-
-    <div id="control" class="row">
-      <div class="large-9 columns">
-        <div id="edit-options">
-        <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
-          <%= link_to 'Edit Deal', edit_deal_path(@deal), class: "button ed-button" %> &nbsp;&nbsp;&nbsp;&nbsp;
-          <%= link_to 'Destroy Deal', @deal, class: "button ed-button",method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="row">
+      <div class="large-12 small-12 columns draft-warning">
+        <% if !@deal.published %>
+          <h3>This Deal is Not Yet Published! Review your deal and click "edit" to make any changes and publish. Deals cannot be changed after publication, except by an admin.</h3>
         <% end %>
-        </div>
       </div>
     </div>
 
+<div class="row">
+  <div class="large-12 small-12 columns text-right">
+    <div class="control">
+        <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
+          <%= link_to 'Edit', edit_deal_path(@deal) %> &nbsp;|
+          <%= link_to 'Destroy', @deal, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="row">
   <% if @deal.image? %>
     <div class="large-6 columns deal-large-image">
       <%= image_tag(@deal.image.url, id: 'deal-image') if @deal.image? %><br>
@@ -38,7 +40,7 @@
     <% if !@deal.funded? && @deal.active? %>
       <%= link_to "Commit!", deal_confirmation_path(@deal), class: "button expand deal-button" %>
     <% else %>
-      <p>This deal has ended! Find another</p>
+      <p>This deal has ended!</p>
     <% end %>
       <h4>Progress to Goal:</h4>
       <%= @deal.funded? ? "Funded!" : "#{@deal.users.count} out of #{@deal.goal}" %>
@@ -59,7 +61,7 @@
 </div>
 
 <div class="row">
-  <div class="large-12 small-12 columns">
+  <div class="large-12 small-12 columns deal-desc-show">
     <div class="panel">
       <h4>
         Description
@@ -67,7 +69,7 @@
       </h4>
       <h5 class="subheader"><%= @deal.description %></h5>
       <%= social_share_button_tag(@deal.title) %>
-      <%= link_to "Flag this deal for admin review", flag_deal_path(@deal), method: :patch %>
+      <%= link_to "Flag", flag_deal_path(@deal), method: :patch, class: "flag-deal" %>
     </div>
   </div>
 </div>
@@ -125,33 +127,22 @@
 
 <div id="comments" class="row">
   <div class="large-12 columns">
-<hr>
-<h4>Comments:</h4>
+    <hr>
+    <h4>Comments:</h4>
 
-<% if !@deal.comments.empty? %>
-  <% @deal.comments.each do |comment| %>
-  <div class="panel">
-    <p><strong><%= link_to comment.user.name, comment.user %></strong><br>
-      <strong>Created <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
-      <%= comment.body %><br>
-      <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
-    </p>
-  </div>
-  <% end %>
-<% else %>
-  No Comments
-<% end %>
-</div>
-</div>
-</div>
-
-<div id="control" class="row">
-  <div class="large-9 columns">
-    <div id="edit-options">
-    <% if policy(@deal).owner? && !@deal.published || policy(@deal).is_admin? %>
-      <%= link_to 'Edit Deal', edit_deal_path(@deal), class: "button ed-button" %> &nbsp;&nbsp;&nbsp;&nbsp;
-      <%= link_to 'Destroy Deal', @deal, class: "button ed-button",method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% if !@deal.comments.empty? %>
+      <% @deal.comments.each do |comment| %>
+      <div class="panel">
+        <p><strong><%= link_to comment.user.name, comment.user %></strong><br>
+          <strong>Created <%= time_ago_in_words(comment.created_at) %> ago</strong><br>
+          <%= comment.body %><br>
+          <%= link_to "Edit", edit_deal_comment_path(@deal, comment) %>
+        </p>
+      </div>
+      <% end %>
+    <% else %>
+      No Comments
     <% end %>
-    </div>
   </div>
+</div>
 </div>
