@@ -7,25 +7,30 @@
       <div class="large-5 columns">
         <div class="panel">
           <h1>Posted Deals</h1>
-            <% if @user.owned_deals %>
-              <% @user.owned_deals.each do |deal| %>
-                <p><%= link_to deal.title, deal %></p>
+            <% if @deals %>
+              <% @deals.each do |deal| %>
+                <% unless !deal.published? && current_user != deal.owner %>
+                  <p><%= link_to deal.title, deal %></p>
+                <% end %>
               <% end %>
             <% else %>
               Nothing here
             <% end %>
+            <%= will_paginate @deals %>
           </div>
         </div>
+
         <div class="large-5 columns">
           <div class="panel">
             <h1>Committed Deals</h1>
-              <% if @user.deals %>
-                <% @user.deals.uniq.each do |deal| %>
+              <% if @committed %>
+                <% @committed.uniq.each do |deal| %>
                   <p><%= link_to deal.title, deal %></p>
                 <% end %>
               <% else %>
                 Nothing here
               <% end %>
+              <%= will_paginate @committed %>
             </div>
           </div>
 
