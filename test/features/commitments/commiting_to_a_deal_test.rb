@@ -1,7 +1,7 @@
 require "test_helper"
 
-feature "Commitments::CommitingToADeal" do
-  scenario "user can confirm commitment before being charged" do
+feature "Committing to a deal" do
+  scenario "takes user to a confirmation page" do
     sign_in
     deal = deals(:widgets)
     visit deal_path(deal.id)

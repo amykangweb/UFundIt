@@ -15,8 +15,8 @@ end
 
 def sign_in(name = :user)
   visit root_path
-  click_link('Log in')
+  click_link('Log In')
   fill_in 'Email', with: users(name).email
   fill_in 'Password', with: 'password'
-  click_button('Log in')
+  click_button('Log In')
 end

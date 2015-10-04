@@ -1,9 +1,9 @@
 require "test_helper"
 
-feature "Deals::ShowADeal" do
+feature "Show Deals" do
   scenario "anyone can view deals" do
     visit root_path
-    page.must_have_content "Set your Ideas on Fire!"
+    page.must_have_content "Dream it. Share it. Fund it."
   end
 
   scenario "anyone can see list of who is supporting a deal" do

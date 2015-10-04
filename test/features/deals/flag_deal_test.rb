@@ -1,21 +1,21 @@
 require "test_helper"
 
-feature "Search Form" do
+feature "Flagging deal" do
 
-  scenario "user can flag a deal for admin review" do
+  scenario "returns notice" do
     skip
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    click_on "Flag this deal for admin review"
+    click_on "Flag"
     page.text.must_include "An admin will review this listing to make sure it confirms with the Terms of Service."
     assert_equal deal.flag, true
   end
 
-  scenario "admin can see and review flagged deals on index page" do
+  scenario "shows flagged deal on index page for admin" do
     skip
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    click_on "Flag this deal for admin review"
+    click_on "Flag"
     assert_equal deal.flag, true
     sign_in(:admin)
     page.text.must_include "Admin Alert"
@@ -23,12 +23,12 @@ feature "Search Form" do
     assert_equal deal.flag, false
   end
 
-  scenario "user can flag a deal that has already been flagged" do
+  scenario "returns notice deal has been flagged" do
     deal = deals(:widgets)
     visit deal_path(deal.id)
-    click_on "Flag this deal for admin review"
+    click_on "Flag"
     visit deal_path(deal.id)
-    click_on "Flag this deal for admin review"
+    click_on "Flag"
     page.text.must_include "Thanks for the heads up. This listing has already been reported."
   end
 end

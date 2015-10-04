@@ -3,7 +3,7 @@ require "test_helper"
 feature "Creating account" do
   before :each do
     visit root_path
-    click_link('Sign up')
+    click_link('Sign Up')
   end
 
   scenario "with valid content is successful" do
@@ -11,7 +11,7 @@ feature "Creating account" do
     fill_in 'Email', with: "new@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
-    click_button('Sign up')
+    click_button('Sign Up')
     page.text.must_include "You have signed up successfully"
   end
 
@@ -20,7 +20,7 @@ feature "Creating account" do
     fill_in 'Email', with: "user@example"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
-    click_button('Sign up')
+    click_button('Sign Up')
     page.text.must_include "Email is invalid"
   end
 
@@ -29,7 +29,7 @@ feature "Creating account" do
     fill_in 'Email', with: "user@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "notmatching"
-    click_button('Sign up')
+    click_button('Sign Up')
     page.text.must_include "Password confirmation doesn't match Password"
   end
 
@@ -38,7 +38,7 @@ feature "Creating account" do
     fill_in 'Email', with: "new@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
-    click_button('Sign up')
+    click_button('Sign Up')
     page.text.must_include "Name can't be blank"
   end
 
@@ -47,7 +47,7 @@ feature "Creating account" do
     fill_in 'Email', with: "new@example.com"
     fill_in 'Password', with: "password"
     fill_in 'Password confirmation', with: "password"
-    click_button('Sign up')
+    click_button('Sign Up')
     page.text.must_include "Name has already been taken"
   end
 end
