@@ -1,16 +1,16 @@
 <div class="deal-show">
   <div class="row">
-    <div class="large-9 columns">
+    <div class="large-12 small-12 columns deal-form">
 
       <h2>Log in</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="field">
-          <%= f.label :email %><br />
+          <%= f.label :email %>
           <%= f.email_field :email, autofocus: true %>
         </div>
 
         <div class="field">
-          <%= f.label :password %><br />
+          <%= f.label :password %>
           <%= f.password_field :password, autocomplete: "off" %>
         </div>
 
@@ -22,7 +22,7 @@
         <% end -%>
 
         <div class="actions">
-          <%= f.submit "Log in" %>
+          <%= f.submit "Log In", class: "button user-update-button" %>
         </div>
       <% end %>
 

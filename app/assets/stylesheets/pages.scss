@@ -1,0 +1,27 @@
+.about {
+  h1, h3 {
+    font-family: 'Passion One', cursive;
+    color: #434335 !important;
+  }
+}
+
+.deal-form {
+  h1, h2, label {
+    font-family: 'Passion One', cursive;
+    color: #434335 !important;
+  }
+}
+
+.user-update-button {
+  font-family: 'Passion One', cursive;
+  font-size: 19px !important;
+  background: #B4656F;
+  &:hover {
+    background: #469378;
+  }
+}
+
+.cancel-account {
+  font-family: 'Passion One', cursive;
+  font-size: 19px !important;
+}
