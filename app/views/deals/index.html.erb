@@ -16,7 +16,7 @@
     <div class="large-9 columns">
       <% if current_user %>
         <% if current_user.admin? && Deal.where(flag: true).count > 0 %>
-          <h3><strong>Admin Alert:</strong></h3>
+          <h3>Admin Alert:</h3>
           <%= render 'deals/flags' %>
         <% end %>
       <% end %>
