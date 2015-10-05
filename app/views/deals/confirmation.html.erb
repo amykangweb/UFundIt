@@ -1,25 +1,25 @@
 <div class="deal-show">
   <div class="row">
-    <div class="large-9 columns">
-      <h1>Confirmation Page</h1>
+    <div class="large-12 small-12 columns confirm-page text-center">
+      <div class="panel">
+        <h1>Confirmation Page</h1>
 
-      <p>You are committing to:</p>
+        <p>You are committing to:</p>
 
-      $<%= @deal.amount %>
+        <span class="confirm-amount">$<%= @deal.amount %></span>
 
-      <p>You will not be charged until the deal is tipped.</p>
+        <p>You will not be charged until the deal is tipped.</p>
 
-      <p>Are you sure?</p>
+        <p>Are you sure?</p>
 
-      <p>
-        <%= link_to commit_deal_path(@deal), method: :patch, class: "paypal" do %>
-          <%= image_tag('paypal.gif', alt: "Paypal") %>
-        <% end %>
-      </p>
+        <p>
+          <%= link_to commit_deal_path(@deal), method: :patch, class: "paypal" do %>
+            <%= image_tag('paypal.gif', alt: "Paypal") %>
+          <% end %>
+        </p>
 
-      <p>
         <%= link_to "Back", @deal %>
-      </p>
+      </div>
     </div>
   </div>
 </div>

@@ -99,3 +99,13 @@
 .control {
   margin-bottom: 20px;
 }
+
+.confirm-page {
+  h1, .confirm-amount {
+    font-family: 'Passion One', cursive !important;
+    color: #434335;
+  }
+  .confirm-amount {
+    font-size: 2rem;
+  }
+}
